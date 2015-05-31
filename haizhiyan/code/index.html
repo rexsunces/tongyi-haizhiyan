@@ -44,16 +44,21 @@
     </style>
 </head>
 <body>
-    <div class="page-1 page hide ">
+    <div class="page-1 page">
         <img class="xunbao-btn" src="img/xunbao-btn.png" />
         <img class="rule-btn" src="img/rule-btn.png" />
         <img class="rank-btn" src="img/rank-btn.png" />
         <img class="return-btn" src="img/return-btn.png" />
     </div>
-    <div class="page-2 page">
+    <div class="page-2 page hide">
         <header style="height:100%;width:100%;position:absolute">
             <div id="slider" class="swipe" style="visibility: visible; height: 100%; width: 100%;">
                 <div class="swipe-wrap" style="height: 100%; width: 100%;">
+                    <figure style="height: 100%; width: 100%;">
+                        <div class="wrap" style="height: 100%; width: 100%;">
+                            <div class="image" style="background: url(img/maps/sh-hk.png) center no-repeat; height: 100%; background-size: 100% 100%"> </div>
+                        </div>
+                    </figure>
                     <figure style="height: 100%; width: 100%;">
                         <div class="wrap" style="height: 100%; width: 100%;">
                             <div class="image" style="background: url(img/maps/sh-hk.png) center no-repeat; height: 100%; background-size: 100% 100%"> </div>
@@ -81,53 +86,16 @@
     <div class="page-city-kpt page hide" style="background-image:url('img/cities/kpt.png')">
         
     </div>
+    <div class="page-question page hide" >
+        <img class="clock" src="img/clock.png" />
+        <span class="using-time-span">0.00S</span>
+    </div>
     <div class="page-99 page hide  ">
         <img class="normal-return-btn" src="img/normal-return-btn.png" />
     </div>
     <script src="js/swipe.js"></script>
     <script>
-        var nowUserPlayedIndex = 2;//悉尼-开普敦
-        var position = new Array();
-        position[2] = { left: 18.8, top: 67 };
-        var slider =
-          Swipe(document.getElementById('slider'), {
-              auto: false,
-              continuous: true,
-              transitionEnd: function (index, elem) {
-                 
-                  //判断如果当前用户玩到第N张图，则在滑动到第N张时，轮船移动
-                  if (index == nowUserPlayedIndex) {
-                      var positionImg = "<img id='position' src='img/position.png'  />";
-                      $('.page-2').append(positionImg);
-                      $('#position').css('left', position[nowUserPlayedIndex].left + '%').css('top', position[nowUserPlayedIndex].top + '%').css('width', 30 + 'px').css('zIndex','');
-                      $('#position').singleTap(function () {
-                          pageCtl.pageMove(pageCtl.effects.fade, "city-kpt");
-                          setTimeout(function () {
-                              pageCtl.pageMove(pageCtl.effects.fade, "question-kpt");
-                          }, 1000)
-                      })
-                      var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;top:70%;left:80%;z-index:' />";
-                      $('.page-2').append(boatImg);
-                      var m = $('#boat');
-                      console.log(m);
-                      var x = 80;
-                      var t = setInterval(function () {
-
-                          var top = (-1 / 180) * x * x + (17 / 30) * x + 61;
-                          
-                          $(m).css('left', x + '%').css('top', top + '%');
-                          console.log($(m).css("top"));
-                          x = x - 0.5;
-                          if (x < position[nowUserPlayedIndex].left) {
-                              clearInterval(t);
-
-                          }
-
-                      }, 10)
-                  }
-              }
-          });
-      
+       
     </script>
 </body>
 
