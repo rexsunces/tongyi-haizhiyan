@@ -1,5 +1,5 @@
 ﻿var pageCtl = {
-    currentPageNumber: 0,
+    currentPageNumber: 1,
 
     effects: { moveUp: 1, moveDown: 2, fade: 3 },
 
@@ -36,3 +36,17 @@
         }
     }
 }
+
+$(function () {
+    $('.rule-btn').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 99);
+    })
+    $('.normal-return-btn').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 1);
+    })
+    $('.xunbao-btn').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 2);
+    })
+  
+
+})

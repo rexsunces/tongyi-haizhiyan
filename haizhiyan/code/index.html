@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/touch.js"></script>
+    <script src="js/index.js"></script>
+    <link href="css/haoest.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    
+    <style>
+        .hide{
+            display:none;
+        }
+
+        .swipe {
+            overflow: hidden;
+            visibility: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+            .swipe-wrap > figure {
+                float: left;
+                width: 100%;
+                position: relative;
+            }
+        #slider {
+            max-width: 650px; /* 设置最大的宽度 */
+            margin: 0px auto; /* 居中对齐 */
+        }
+
+        figure {
+            margin: 0; /* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */
+        }  
+    </style>
+</head>
+<body>
+    <div class="page-1 page hide ">
+        <img class="xunbao-btn" src="img/xunbao-btn.png" />
+        <img class="rule-btn" src="img/rule-btn.png" />
+        <img class="rank-btn" src="img/rank-btn.png" />
+        <img class="return-btn" src="img/return-btn.png" />
+    </div>
+    <div class="page-2 page">
+        <header style="height:100%;width:100%;position:absolute">
+            <div id="slider" class="swipe" style="visibility: visible; height: 100%; width: 100%;">
+                <div class="swipe-wrap" style="height: 100%; width: 100%;">
+                    <figure style="height: 100%; width: 100%;">
+                        <div class="wrap" style="height: 100%; width: 100%;">
+                            <div class="image" style="background: url(img/maps/sh-hk.png) center no-repeat; height: 100%; background-size: 100% 100%"> </div>
+                        </div>
+                    </figure>
+                    <figure style="height: 100%; width: 100%;">
+                        <div class="wrap" style="height: 100%; width: 100%;">
+                            <div class="image" style="background: url(img/maps/hk-sn.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
+                        </div>
+                    </figure>
+                    <figure style="height: 100%; width: 100%;">
+                        <div class="wrap" style="height: 100%; width: 100%;">
+                            <div class="image" style="background: url(img/maps/sn-kpt.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
+                        </div>
+                    </figure>
+                    <figure style="height: 100%; width: 100%;">
+                        <div class="wrap" style="height: 100%; width: 100%;">
+                            <div class="image" style="background: url(img/maps/kpt-bn.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="page-city-kpt page hide" style="background-image:url('img/cities/kpt.png')">
+        
+    </div>
+    <div class="page-99 page hide  ">
+        <img class="normal-return-btn" src="img/normal-return-btn.png" />
+    </div>
+    <script src="js/swipe.js"></script>
+    <script>
+        var nowUserPlayedIndex = 2;//悉尼-开普敦
+        var position = new Array();
+        position[2] = { left: 18.8, top: 67 };
+        var slider =
+          Swipe(document.getElementById('slider'), {
+              auto: false,
+              continuous: true,
+              transitionEnd: function (index, elem) {
+                 
+                  //判断如果当前用户玩到第N张图，则在滑动到第N张时，轮船移动
+                  if (index == nowUserPlayedIndex) {
+                      var positionImg = "<img id='position' src='img/position.png'  />";
+                      $('.page-2').append(positionImg);
+                      $('#position').css('left', position[nowUserPlayedIndex].left + '%').css('top', position[nowUserPlayedIndex].top + '%').css('width', 30 + 'px').css('zIndex','');
+                      $('#position').singleTap(function () {
+                          pageCtl.pageMove(pageCtl.effects.fade, "city-kpt");
+                          setTimeout(function () {
+                              pageCtl.pageMove(pageCtl.effects.fade, "question-kpt");
+                          }, 1000)
+                      })
+                      var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;top:70%;left:80%;z-index:' />";
+                      $('.page-2').append(boatImg);
+                      var m = $('#boat');
+                      console.log(m);
+                      var x = 80;
+                      var t = setInterval(function () {
+
+                          var top = (-1 / 180) * x * x + (17 / 30) * x + 61;
+                          
+                          $(m).css('left', x + '%').css('top', top + '%');
+                          console.log($(m).css("top"));
+                          x = x - 0.5;
+                          if (x < position[nowUserPlayedIndex].left) {
+                              clearInterval(t);
+
+                          }
+
+                      }, 10)
+                  }
+              }
+          });
+      
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+﻿body {
+    margin:0px;
+}
+img{
+    position:absolute;
+}
+
+.page{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-size:100% 100%;
+}
+.page-1{
+    background-image:url('../img/index.png');
+}
+.page-1 .xunbao-btn{
+    top:48%;
+    left:8%;
+    width:40%;
+}
+.page-1 .rule-btn{
+    top:48%;
+    left:52%;
+    width:40%;
+}
+.page-1 .rank-btn{
+    top:60%;
+    left:8%;
+    width:40%;
+}
+.page-1 .return-btn{
+    top:60%;
+    left:52%;
+    width:40%;
+}
+.page-99{
+    background-image:url('../img/rule-back.png');
+}
+.page-99 .normal-return-btn{
+    top:80%;
+    left:60%;
+    width:30%;
+}
