@@ -31,6 +31,14 @@
                 pageCtl.isAnimating = false;
             }, 600);
         }
+    },
+    loadComplete: function () {
+        InitCurrentMap();
+        $('.page-0').addClass("ani-fadeOut");
+        setTimeout(function () {   
+            $('.page-0').addClass("hide");
+        }, 600);
+        
     }
 }
 var answerQuestion = new Array()
@@ -90,7 +98,7 @@ var gameInfo = {
 var userInfo = {
     userId: null,
     userAllGameOk: false,
-    nowUserPlayedIndex: 2,
+    nowUserPlayedIndex: 0,
     userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
     currentGameScore:
         {
@@ -121,8 +129,11 @@ $(function () {
     })
     $('.xunbao-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 2);
+        setTimeout(function () { SetBoatAndPosition(); }, 500);
 
-        InitCurrentMap();
+
+   
+
 
 
     })

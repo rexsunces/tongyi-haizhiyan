@@ -10,8 +10,8 @@ img {
 /*span {
     position: absolute;
 }*/
-.bolder{
-    font-weight:bolder;
+.bolder {
+    font-weight: bolder;
 }
 
 .question_desc {
@@ -34,6 +34,35 @@ img {
     position: absolute;
     background-size: 100% 100%;
 }
+
+.page-0 {
+    background-color:#C7FFEC;
+}
+
+    .page-0 .loading {
+        width: 30%;
+        height: 40%;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        margin-top: -20%;
+        margin-left: -15%;
+        font-size: 20%;
+        color: #000;
+    }
+
+    .page-0 .loading-img {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+    .page-0 .loading div {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        text-align: center;
+        font-size: 20px;
+    }
 
 .page-1 {
     background-image: url('../img/index.png');

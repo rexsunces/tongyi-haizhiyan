@@ -43,14 +43,20 @@
         }  
     </style>
 </head>
-<body>
-    <div class="page-1 page">
+<body onload="pageCtl.loadComplete()">
+    <div class="page page-0" style="z-index:999">
+        <div class="loading">
+            <img class="loading-img ani-rotateRight ani-iteration-infinite" src="img/loading.png" />
+            <div>Loading</div>
+        </div>
+    </div>
+    <div class="page-1 page " style="z-index:998">
         <img class="xunbao-btn" src="img/xunbao-btn.png" />
         <img class="rule-btn" src="img/rule-btn.png" />
         <img class="rank-btn" src="img/rank-btn.png" />
         <img class="return-btn" src="img/return-btn.png" />
     </div>
-    <div class="page-2 page hide">
+    <div class="page-2 page" style="z-index:997">
         <header style="height:100%;width:100%;position:absolute">
             <div id="slider" class="swipe" style="visibility: visible; height: 100%; width: 100%;">
                 <div class="swipe-wrap" style="height: 100%; width: 100%;">
