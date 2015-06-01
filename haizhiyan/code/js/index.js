@@ -16,7 +16,6 @@
                     inClass = 'ani-fadeIn';
                     break;
             }
-
             $(toPage).removeClass("hide");
             $(fromPage).addClass(outClass);
             $(toPage).addClass(inClass);
@@ -25,14 +24,12 @@
                 $(fromPage).removeClass('page-current');
                 $(fromPage).removeClass(outClass);
                 $(fromPage).addClass("hide");
-                $(fromPage).find("*").addClass("hide");
-
+               // $(fromPage).find("*").addClass("hide");
                 $(toPage).addClass('page-current');
                 $(toPage).removeClass(inClass);
-                $(toPage).find("*").removeClass("hide");
-
+                //$(toPage).find("*").removeClass("hide");
                 pageCtl.isAnimating = false;
-            }, 300);
+            }, 600);
         }
     }
 }
@@ -93,7 +90,7 @@ var gameInfo = {
 var userInfo = {
     userId: null,
     userAllGameOk: false,
-    nowUserPlayedIndex: 0,
+    nowUserPlayedIndex: 2,
     userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
     currentGameScore:
         {
@@ -133,18 +130,20 @@ $(function () {
 
 
     $('.result-next').singleTap(function () {
-        GameReset();
+
         userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         mySwipe.next()
         SetBoatAndPosition();
+        GameReset();
 
         // InitCurrentMap();
     })
     $('.result-return').singleTap(function () {
-        GameReset();
+
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         SetBoatAndPosition();
+        GameReset();
         // InitCurrentMap();
     })
 
