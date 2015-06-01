@@ -50,16 +50,16 @@ var timer_time = {
     timer9: 0.00
 }
 var gameInfo = {
-    game0: { Name: "sh", Position: { left: 67, top: 47 }, Boat: { startLeft: 75, endLeft: 75, startTop: 50, endTop: 50 } },
+    game0: { Name: "sh", Position: { left: 67, top: 47 }, Boat: { startLeft: 75, endLeft: 75, startTop: 50, endTop: 50, inverse: 1 } },
     game1: { Name: "hk", Position: { left: 61, top: 51 }, Boat: { startLeft: 65, endLeft: 55, startTop: 50, endTop: 55, a: 0.056, b: -7.2, c: 281 } },
     game2: { Name: "sy", Position: { left: 75, top: 69 }, Boat: { startLeft: 62, startTop: 55, endLeft: 80, endTop: 72, inverse: 1, a: -0.22, b: 28.53, c: -845.87 } },
-    game3: { Name: "kpt", Position: { left: 18.8, top: 67 }, Boat: { startLeft: 80, endLeft: 25, startTop: 72, endTop: 77, a: -0.008, b: 0.889, c: 52.85 } },
-    game4: { Name: "bn", Position: { left: 34, top: 67 } },
-    game5: { Name: "ly", Position: { left: 0, top: 0 } },
-    game6: { Name: "ny", Position: { left: 0, top: 0 } },
-    game7: { Name: "ld", Position: { left: 0, top: 0 } },
-    game8: { Name: "wns", Position: { left: 0, top: 0 } },
-    game9: { Name: "ms", Position: { left: 0, top: 0 } }
+    game3: { Name: "kpt", Position: { left: 18.8, top: 67 }, Boat: { startLeft: 80, endLeft: 25, startTop: 72, endTop: 77, inverse: 0, a: -0.008, b: 0.889, c: 52.85 } },
+    game4: { Name: "bn", Position: { left: 34, top: 67 }, Boat: { startLeft: 60, endLeft: 30, startTop: 77, endTop: 74, inverse: 0, a: -0.0022, b: 0.3, c: 67 } },
+    game5: { Name: "ly", Position: { left: 28, top: 58 }, Boat: { startLeft: 40, startTop: 76, endLeft:23, endTop: 65, inverse: 0, a: 0.0461, b: -2.256, c: 92.51 } },
+    game6: { Name: "ny", Position: { left: 35.5, top: 42 }, Boat: { startLeft: 22, startTop: 62, endLeft: 28, endTop: 48, inverse: 3, a: 0.1198, b: -13.63, c: 406.5 } },
+    game7: { Name: "ld", Position: { left: 50.8, top: 50 }, Boat: { startLeft: 10, startTop: 45, endLeft: 58, endTop: 53, inverse: 2, a: 0.00417, b:-0.1167, c: 45.75 } },
+    game8: { Name: "wns", Position: { left: 0, top: 0 }, Boat: { startLeft: 60, endLeft: 30, startTop: 77, endTop: 74, inverse: 0, a: -0.0022, b: 0.3, c: 67 } },
+    game9: { Name: "ms", Position: { left: 0, top: 0 }, Boat: { startLeft: 60, endLeft: 30, startTop: 77, endTop: 74, inverse: 0, a: -0.0022, b: 0.3, c: 67 } }
 }
 var userInfo = {
     userId: null,
@@ -194,7 +194,7 @@ function SetBoatAndPosition() {
 
         }, 10)
     }
-    else {
+    else if(gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 0) {
         $('.page-2').append(boatImg);
         var m = $('#boat');
         var x = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft;
@@ -206,6 +206,47 @@ function SetBoatAndPosition() {
             x = x - 0.1;
             var top = a * x * x + b * x + c;
             if (x < gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endLeft) {
+                clearInterval(t);
+
+
+            }
+            $(m).css('left', x + '%').css('top', top + '%');
+        }, 10)
+    }
+    else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 3) {
+        $('.page-2').append(boatImg);
+        var m = $('#boat');
+        var y = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop;
+        var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
+        var b = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.b;
+        var c = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.c;
+        var t = setInterval(function () {
+
+            var left = a * y * y + b * y + c;
+
+            $(m).css('left', left + '%').css('top', y + '%');
+
+            y = y - 0.1;
+            if (y < gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endTop) {
+                clearInterval(t);
+
+
+            }
+
+        }, 10)
+    }
+    else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 2) {
+        $('.page-2').append(boatImg);
+        var m = $('#boat');
+        var x = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft;
+        $(m).css('left', x + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%');
+        var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
+        var b = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.b;
+        var c = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.c;
+        var t = setInterval(function () {
+            x = x + 0.1;
+            var top = a * x * x + b * x + c;
+            if (x > gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endLeft) {
                 clearInterval(t);
 
 
