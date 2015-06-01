@@ -57,9 +57,51 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="code\canvas2.html" />
     <Content Include="code\css\haoest.min.css" />
+    <Content Include="code\css\index.css" />
+    <Content Include="code\img\boat.png" />
+    <Content Include="code\img\cities\hk.png" />
+    <Content Include="code\img\cities\kpt.png" />
+    <Content Include="code\img\cities\sh.png" />
+    <Content Include="code\img\cities\sy.png" />
+    <Content Include="code\img\clock.png" />
+    <Content Include="code\img\index.png" />
+    <Content Include="code\img\maps\bn-ly.png" />
+    <Content Include="code\img\maps\hk-sn.png" />
+    <Content Include="code\img\maps\kpt-bn.png" />
+    <Content Include="code\img\maps\ld-vns.png" />
+    <Content Include="code\img\maps\ly-ny.png" />
+    <Content Include="code\img\maps\ny-ld.png" />
+    <Content Include="code\img\maps\sh-hk.png" />
+    <Content Include="code\img\maps\sn-kpt.png" />
+    <Content Include="code\img\maps\vns-ms.png" />
+    <Content Include="code\img\normal-next-btn.png" />
+    <Content Include="code\img\normal-return-btn.png" />
+    <Content Include="code\img\position.png" />
+    <Content Include="code\img\question-back.png" />
+    <Content Include="code\img\rank-btn.png" />
+    <Content Include="code\img\result-A.png" />
+    <Content Include="code\img\result-B.png" />
+    <Content Include="code\img\result-back.png" />
+    <Content Include="code\img\result-board-A.png" />
+    <Content Include="code\img\result-board-B.png" />
+    <Content Include="code\img\result-board-C.png" />
+    <Content Include="code\img\result-board-D.png" />
+    <Content Include="code\img\result-board-E.png" />
+    <Content Include="code\img\result-board-S.png" />
+    <Content Include="code\img\result-C.png" />
+    <Content Include="code\img\result-D.png" />
+    <Content Include="code\img\result-E.png" />
+    <Content Include="code\img\result-S.png" />
+    <Content Include="code\img\return-btn.png" />
+    <Content Include="code\img\rule-back.png" />
+    <Content Include="code\img\rule-btn.png" />
+    <Content Include="code\img\xunbao-btn.png" />
+    <Content Include="code\index.html" />
     <Content Include="code\js\index.js" />
+    <Content Include="code\js\swipe.js" />
+    <Content Include="code\js\touch.js" />
+    <Content Include="code\js\zepto.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +115,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="code\img\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
