@@ -66,6 +66,7 @@
     <Content Include="code\img\cities\sy.png" />
     <Content Include="code\img\clock.png" />
     <Content Include="code\img\index.png" />
+    <Content Include="code\img\loading.png" />
     <Content Include="code\img\maps\bn-ly.png" />
     <Content Include="code\img\maps\hk-sn.png" />
     <Content Include="code\img\maps\kpt-bn.png" />
