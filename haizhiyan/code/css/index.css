@@ -1,14 +1,32 @@
 ﻿body {
     margin: 0px;
+    font-family: 'Microsoft YaHei';
 }
 
 img {
     position: absolute;
 }
 
-span {
+/*span {
     position: absolute;
+}*/
+.bolder{
+    font-weight:bolder;
 }
+
+.question_desc {
+    width: 80%;
+    word-wrap: break-word;
+    font-weight: bolder;
+}
+
+.perquestion-div {
+    padding-top: 80px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+
 
 .page {
     width: 100%;
@@ -53,7 +71,7 @@ span {
         width: 15%;
         left: 55%;
         top: 30%;
-        z-index:99;
+        z-index: 99;
     }
 
     .page-question .using-time-span {
@@ -61,27 +79,28 @@ span {
         top: 34%;
         font-size: x-large;
         font-weight: bolder;
-        z-index:99;
+        z-index: 99;
+        position: absolute;
     }
 
     .page-question .question-div {
         position: absolute;
         top: 30%;
         left: 8%;
-        min-height: 40%;
+        min-height: 48%;
         width: 84%;
         /* border: green 1px solid; */
         background-color: white;
         opacity: 0.4;
     }
-    .page-question .question-div-text{
-         position: absolute;
+
+    .page-question .question-div-text {
+        position: absolute;
         top: 30%;
         left: 8%;
-        min-height: 40%;
+        min-height: 48%;
         width: 84%;
         /* border: green 1px solid; */
-
     }
 
 .page-99 {

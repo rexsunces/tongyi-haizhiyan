@@ -61,14 +61,21 @@ var timer_time = {
     timer9: 0.00
 }
 var questionInfo = {
-    game0: [{ question: "上海是什么市？", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
+    game0: [{ question: "上海是什么市？呵呵呵 aaaaa呵呵daddada呵呵哈哈哈sasa", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
         { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
         { question: "我是谁1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
         { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
         { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
         { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
-        ],
-    game1: [{ question: "香港英文缩写是啥？", answers: ["A、SH", "B、HK", "C、PK", "D、我不知道~"], correctNo: 1 }, { question: "香港人是啥？", answers: ["A、答案是B", "B、答案是C", "C、A和B说谎了", "D、我不知道~"], correctNo: 3 }],
+    ],
+    game1: [{ question: "上海是什么市？香港", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
+    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    ],
+  //  game1: [{ question: "香港英文缩写是啥？", answers: ["A、SH", "B、HK", "C、PK", "D、我不知道~"], correctNo: 1 }, { question: "香港人是啥？", answers: ["A、答案是B", "B、答案是C", "C、A和B说谎了", "D、我不知道~"], correctNo: 3 }],
     game2: [{ question: "悉尼在哪个国家？", answers: ["A、澳大利亚", "B、奥地利", "C、中国", "D、我不知道~"], correctNo: 0 }],
 }
 var gameInfo = {
@@ -88,14 +95,14 @@ var userInfo = {
     userAllGameOk: false,
     nowUserPlayedIndex: 0,
     userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
-    currentGameScore: 
-        { 
-            game0: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null } ,
-            game1: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null } ,
-            game2: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null } ,
-            game3: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null } 
+    currentGameScore:
+        {
+            game0: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game1: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game2: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game3: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null }
         }
-                      
+
 
 
 }
@@ -126,6 +133,7 @@ $(function () {
 
 
     $('.result-next').singleTap(function () {
+        GameReset();
         userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         mySwipe.next()
@@ -134,6 +142,7 @@ $(function () {
         // InitCurrentMap();
     })
     $('.result-return').singleTap(function () {
+        GameReset();
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         SetBoatAndPosition();
         // InitCurrentMap();
@@ -141,6 +150,13 @@ $(function () {
 
 
 })
+
+function GameReset() {
+    currentAnswerNums = 0;//当前用户的答题数目(0-10)
+    currentAnswerCorrectNums = 0;
+    questionClicked = null;
+    questionClicked = new Array();
+}
 function QuestionTimerStart() {
     timer = setInterval(function () {
         timer_time["timer" + userInfo.nowUserPlayedIndex]++;
@@ -158,7 +174,7 @@ function QuestionStart() {
 
 function QuestionInit() {
 
-    var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex];
+    var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex].slice(0);
     maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
     var perQuestion = new Array();
     var i = 0;
@@ -168,28 +184,35 @@ function QuestionInit() {
         }
         if (nowQuestion == i) {
             //var answerQuestion[userInfo.nowUserPlayedIndex][i]
-            var question = "<div id= 'question_" + i + "'><span>"+(i+1)+"、" + perQuestion.question + "</span><br />" +
-                "<span class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/>" +
-                 "<span class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/>" +
-                  "<span class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/>" +
-                   "<span class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/></div>";
+            var question = "<div class='perquestion-div' id= 'question_" + i + "'><span class='question_desc'>" + (i + 1) + "、" + perQuestion.question + "</span><br /><br/>" +
+                "<span id='" + i + "_" + 0 + "' class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/><br/>" +
+                 "<span id='" + i + "_" + 1 + "' class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/><br/>" +
+                  "<span id='" + i + "_" + 2 + "' class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/><br/>" +
+                   "<span id='" + i + "_" + 3 + "' class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/><br/></div>";
             $('.question-div-text').append(question);
         }
         else {
-            var question = "<div class='hide' id='question_" + i + "'><span>" + (i + 1) + "、" + perQuestion.question + "</span><br />" +
-                "<span class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/>" +
-                 "<span class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/>" +
-                  "<span class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/>" +
-                   "<span class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/></div>";
+            var question = "<div class='hide perquestion-div' id='question_" + i + "'><span class='question_desc'>" + (i + 1) + "、" + perQuestion.question + "</span><br /><br/>" +
+                "<span id='" + i + "_" + 0 + "' class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/><br/>" +
+                 "<span id='" + i + "_" + 1 + "' class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/><br/>" +
+                  "<span id='" + i + "_" + 2 + "' class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/><br/>" +
+                   "<span id='" + i + "_" + 3 + "' class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/><br/></div>";
             $('.question-div-text').append(question);
         }
         i++;
     }
     $('.answer').each(function () {
         $(this).singleTap(function () {
+            if (questionClicked[$(this).attr("id")] == 1) {
+                return false;
+            }
+            if (questionClicked[$(this).attr("id")] == null) {
+                questionClicked[$(this).attr("id")] = 1;
+            }
+            $(this).addClass("bolder");
             currentAnswerNums++;
             var nowQuestionId = $(this).attr("data_qid");
-           
+
             var nextQuestionId = parseInt(nowQuestionId) + 1;
 
             if ($(this).attr("data_a") == $(this).attr("data_correct")) {
@@ -209,7 +232,7 @@ function QuestionInit() {
                         $('#question_' + nowQuestionId).addClass("hide");
                         $('#question_' + nextQuestionId).removeClass("hide");
                     }
-                }, 500);
+                }, 300);
 
             }
             else {
@@ -223,16 +246,16 @@ function QuestionInit() {
                         $('#question_' + nowQuestionId).addClass("hide");
                         $('#question_' + nextQuestionId).removeClass("hide");
                     }
-                }, 500);
+                }, 300);
             }
         })
     })
 }
 
-function SetUserCurrentScore(answerNums,answerCorrectNums,answerTime){
+function SetUserCurrentScore(answerNums, answerCorrectNums, answerTime) {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums = answerNums;
-    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime = answerTime;
-    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate=(answerCorrectNums/answerNums).toFixed(2);
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime = (answerTime / 100).toFixed(2);
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (answerCorrectNums / answerNums).toFixed(2);
 }
 function GetCityQuestionInfo(cityId) {
     $('.testend').text("[测试]第" + cityId + "个城市的十个题目，点击进入下一步");
