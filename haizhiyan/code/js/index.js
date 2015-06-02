@@ -37,6 +37,7 @@
         $('.page-0').addClass("ani-fadeOut");
         setTimeout(function () {   
             $('.page-0').addClass("hide");
+            $('.page-2').addClass("hide");
         }, 600);
         
     }
@@ -98,7 +99,7 @@ var gameInfo = {
 var userInfo = {
     userId: null,
     userAllGameOk: false,
-    nowUserPlayedIndex: 2,
+    nowUserPlayedIndex: 3,
     userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
     currentGameScore:
         {
@@ -129,7 +130,7 @@ $(function () {
     })
     $('.xunbao-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        setTimeout(function () { SetBoatAndPosition(); }, 500);
+        setTimeout(function () { SetBoatAndPosition(); }, 1000);
 
 
    
@@ -155,7 +156,7 @@ $(function () {
         // InitCurrentMap();
     })
     $('.result-return').singleTap(function () {
-        $('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
+        //$('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         setTimeout(function () {
             SetBoatAndPosition();
@@ -273,6 +274,7 @@ function SetUserCurrentScore(answerNums, answerCorrectNums, answerTime) {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums = answerNums;
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime = (answerTime / 100).toFixed(2);
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (answerCorrectNums / answerNums).toFixed(2);
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = "S";
 }
 function GetCityQuestionInfo(cityId) {
     $('.testend').text("[测试]第" + cityId + "个城市的十个题目，点击进入下一步");
@@ -293,7 +295,7 @@ function InitCurrentMap() {
             $('#position').remove();
             $('#boat').remove();
         },
-        transitionEnd: function (index, elem) {
+        transitionEnd: function (index, elem) { 
             $('#position').remove();
             $('#boat').remove();
             //判断如果当前用户玩到第N张图，则在滑动到第N张时，轮船移动
@@ -326,6 +328,7 @@ function SetBoatAndPosition() {
         var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;z-index:' />";
         $('.page-2').append(boatImg);
     }
+
     $('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
     if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 1) {
         var m = $('#boat');
@@ -338,8 +341,8 @@ function SetBoatAndPosition() {
             var left = a * y * y + b * y + c;
 
             $(m).css('left', left + '%').css('top', y + '%');
-
-            y = y + 0.1;
+            console.log("x=" + left + ";y=" + y);
+            y = y + 0.05;
             if (y > gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endTop) {
                 clearInterval(t);
 
@@ -414,6 +417,7 @@ function OneCitySuccess() {
     $('.question-div-text').html("");
     ShowResult();
 }
+//显示结果
 function ShowResult() {
     var level = "D";//相关算法 SABCDE
     $(".result-board").attr("src", "img/result-board-" + level + ".png");
@@ -422,4 +426,8 @@ function ShowResult() {
     $('.page-result').removeClass("hide").addClass("page-current");
     pageCtl.currentPageNumber = "result";
     // pageCtl.pageMove(pageCtl.effects.fade, "result");
+}
+//设置已完成的城市地图上的成绩
+function SetScoreInCity(cityId) {
+    userInfo.currentGameScore["game" + cityId].scoreLevel
 }
