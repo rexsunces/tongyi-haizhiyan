@@ -98,7 +98,7 @@ var gameInfo = {
 var userInfo = {
     userId: null,
     userAllGameOk: false,
-    nowUserPlayedIndex: 0,
+    nowUserPlayedIndex: 2,
     userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
     currentGameScore:
         {
@@ -155,7 +155,7 @@ $(function () {
         // InitCurrentMap();
     })
     $('.result-return').singleTap(function () {
-
+        $('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         setTimeout(function () {
             SetBoatAndPosition();
@@ -326,6 +326,7 @@ function SetBoatAndPosition() {
         var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;z-index:' />";
         $('.page-2').append(boatImg);
     }
+    $('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
     if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 1) {
         var m = $('#boat');
         var y = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop;
@@ -411,5 +412,14 @@ function OneCitySuccess() {
     $('.using-time-span').text("0.00S");
     timer_time["timer" + userInfo.nowUserPlayedIndex] = 0;
     $('.question-div-text').html("");
-    pageCtl.pageMove(pageCtl.effects.fade, "result");
+    ShowResult();
+}
+function ShowResult() {
+    var level = "D";//相关算法 SABCDE
+    $(".result-board").attr("src", "img/result-board-" + level + ".png");
+    $(".result-letter").attr("src", "img/result-" + level + ".png");
+    $('.page-' + pageCtl.currentPageNumber).addClass("hide").removeClass("page-current");
+    $('.page-result').removeClass("hide").addClass("page-current");
+    pageCtl.currentPageNumber = "result";
+    // pageCtl.pageMove(pageCtl.effects.fade, "result");
 }
