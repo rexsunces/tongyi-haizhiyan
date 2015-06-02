@@ -145,16 +145,23 @@ $(function () {
         userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
         pageCtl.pageMove(pageCtl.effects.fade, 2);
         mySwipe.next()
-        SetBoatAndPosition();
-        GameReset();
+
+        setTimeout(function () {
+            SetBoatAndPosition();
+            GameReset();
+        }, 1000);
+
 
         // InitCurrentMap();
     })
     $('.result-return').singleTap(function () {
 
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        SetBoatAndPosition();
-        GameReset();
+        setTimeout(function () {
+            SetBoatAndPosition();
+            GameReset();
+        }, 1000);
+
         // InitCurrentMap();
     })
 
@@ -277,7 +284,7 @@ function GetCityQuestionInfo(cityId) {
     }
 }
 function InitCurrentMap() {
-    SetBoatAndPosition();
+    //SetBoatAndPosition();
     window.mySwipe = new Swipe(document.getElementById('slider'), {
         startSlide: userInfo.nowUserPlayedIndex,
         auto: false,
@@ -298,24 +305,28 @@ function InitCurrentMap() {
     });
 }
 function SetBoatAndPosition() {
-    $('#position').remove();
-    $('#boat').remove();
-    var positionImg = "<img id='position' src='img/position.png'  />";
-    $('.page-2').append(positionImg);
-    $('#position').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.left + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.top + '%').css('width', 30 + 'px').css('zIndex', '999');
-    $('#position').singleTap(function () {
-        pageCtl.pageMove(pageCtl.effects.fade, "city-" + gameInfo["game" + userInfo.nowUserPlayedIndex].Name);
-        setTimeout(function () {
-            pageCtl.pageMove(pageCtl.effects.fade, "question");
+    ///$('#position').remove();
+    ///$('#boat').remove();
+    if ($('#position').size() == 0) {
+        var positionImg = "<img id='position' src='img/position.png'  />";
+        $('.page-2').append(positionImg);
+        $('#position').singleTap(function () {
+            pageCtl.pageMove(pageCtl.effects.fade, "city-" + gameInfo["game" + userInfo.nowUserPlayedIndex].Name);
             setTimeout(function () {
-                QuestionStart();
-            }, 1000);
-        }, 2000)
-    })
+                pageCtl.pageMove(pageCtl.effects.fade, "question");
+                setTimeout(function () {
+                    QuestionStart();
+                }, 1000);
+            }, 2000)
+        })
+    }
+    $('#position').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.left + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.top + '%').css('width', 30 + 'px').css('zIndex', '999');
 
-    var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;z-index:' />";
-    if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 1) {
+    if ($('#boat').size() == 0) {
+        var boatImg = "<img id='boat' src='img/boat.png' style='width:39px;height:21px;z-index:' />";
         $('.page-2').append(boatImg);
+    }
+    if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 1) {
         var m = $('#boat');
         var y = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop;
         var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
@@ -337,7 +348,6 @@ function SetBoatAndPosition() {
         }, 10)
     }
     else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 0) {
-        $('.page-2').append(boatImg);
         var m = $('#boat');
         var x = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft;
         $(m).css('left', x + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%');
@@ -356,7 +366,6 @@ function SetBoatAndPosition() {
         }, 10)
     }
     else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 3) {
-        $('.page-2').append(boatImg);
         var m = $('#boat');
         var y = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop;
         var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
@@ -378,7 +387,6 @@ function SetBoatAndPosition() {
         }, 10)
     }
     else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 2) {
-        $('.page-2').append(boatImg);
         var m = $('#boat');
         var x = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft;
         $(m).css('left', x + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%');
