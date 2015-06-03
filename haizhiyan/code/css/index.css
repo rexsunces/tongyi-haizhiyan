@@ -105,13 +105,13 @@ img {
     .page-2 .position {
         opacity: 0;
         width: 25px;
-        z-index: 999;
+        z-index: 998;
     }
 
     .page-2 .letter {
         opacity: 0;
-        width: 20px;
-        z-index: 998;
+        width: 4%;
+        z-index: 999;
     }
 
     .page-2 .boat {
