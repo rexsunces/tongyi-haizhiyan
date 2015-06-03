@@ -101,20 +101,23 @@ img {
         left: 65%;
         width: 30%;
     }
-    .page-2 .position{
-        opacity:0;
-        width:25px;
-        z-index:999;
+
+    .page-2 .position {
+        opacity: 0;
+        width: 25px;
+        z-index: 999;
     }
-    .page-2 .letter{
-        opacity:0;
-        width:20px;
-        z-index:998;
+
+    .page-2 .letter {
+        opacity: 0;
+        width: 20px;
+        z-index: 998;
     }
-    .page-2 .boat{
-        opacity:0;
-        width:12%;
-        z-index:997;
+
+    .page-2 .boat {
+        opacity: 0;
+        width: 12%;
+        z-index: 997;
     }
 
 .page-question {
@@ -166,6 +169,74 @@ img {
         left: 60%;
         width: 30%;
     }
+
+.page-rank {
+    background-image: url('../img/rank-back.png');
+}
+
+    .page-rank .rank-return-btn {
+        top: 85%;
+        left: 65%;
+        width: 30%;
+    }
+
+    .page-rank .rank-opacity-div {
+        position: absolute;
+        top: 24%;
+        left: 5%;
+        width: 90%;
+        height: 50%;
+        background-color: white;
+        opacity: 0.7;
+        border-radius: 20px;
+    }
+
+    .page-rank .rank-table-div {
+        position: absolute;
+        top: 24%;
+        left: 5%;
+        width: 90%;
+        min-height: 50%;
+    }
+
+    .page-rank table {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        width: 95%;
+        text-align: center;
+        font-size: 8px;
+        border: solid rgb(55, 183, 224);
+        border-width: 2px 0px 0px 2px;
+    }
+
+        .page-rank table th {
+            border: solid rgb(55, 183, 224);
+            border-width: 0px 2px 2px 0px;
+            height:20px;
+        }
+
+        .page-rank table .th-xuhao {
+            width: 12%;
+        }
+
+        .page-rank table .th-normal {
+            width: 22%;
+        }
+
+        .page-rank table td {
+            height:20px;
+            border: solid rgb(55, 183, 224);
+            border-width: 0px 2px 2px 0px;
+        }
+
+.th-align-center {
+    text-align: center;
+}
+
+.th-align-left {
+    text-align: left;
+}
 
 .page-result {
     background-image: url('../img/result-back.png');
