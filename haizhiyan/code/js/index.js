@@ -1,5 +1,5 @@
 ﻿var pageCtl = {
-    currentPageNumber: 1,
+    currentPageNumber: 0,
 
     effects: { moveUp: 1, moveDown: 2, fade: 3 },
 
@@ -24,7 +24,7 @@
                 $(fromPage).removeClass('page-current');
                 $(fromPage).removeClass(outClass);
                 $(fromPage).addClass("hide");
-               // $(fromPage).find("*").addClass("hide");
+                // $(fromPage).find("*").addClass("hide");
                 $(toPage).addClass('page-current');
                 $(toPage).removeClass(inClass);
                 //$(toPage).find("*").removeClass("hide");
@@ -33,13 +33,7 @@
         }
     },
     loadComplete: function () {
-        InitCurrentMap();
-        $('.page-0').addClass("ani-fadeOut");
-        setTimeout(function () {   
-            $('.page-0').addClass("hide");
-            $('.page-2').addClass("hide");
-        }, 600);
-        
+        pageCtl.pageMove(pageCtl.effects.fade, 1);
     }
 }
 var answerQuestion = new Array()
@@ -53,6 +47,7 @@ var currentAnswerCorrectNums = 0;
 var questionClicked = new Array();
 var nowQuestion = -1;
 ;//answerQuestion[i][0~10];
+var mapInited = false;
 var timer = null;
 var timer_time = {
     timer0: 0.00,
@@ -81,15 +76,16 @@ var questionInfo = {
     { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
     { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
     ],
-  //  game1: [{ question: "香港英文缩写是啥？", answers: ["A、SH", "B、HK", "C、PK", "D、我不知道~"], correctNo: 1 }, { question: "香港人是啥？", answers: ["A、答案是B", "B、答案是C", "C、A和B说谎了", "D、我不知道~"], correctNo: 3 }],
+    //  game1: [{ question: "香港英文缩写是啥？", answers: ["A、SH", "B、HK", "C、PK", "D、我不知道~"], correctNo: 1 }, { question: "香港人是啥？", answers: ["A、答案是B", "B、答案是C", "C、A和B说谎了", "D、我不知道~"], correctNo: 3 }],
     game2: [{ question: "悉尼在哪个国家？", answers: ["A、澳大利亚", "B、奥地利", "C、中国", "D、我不知道~"], correctNo: 0 }],
 }
 var gameInfo = {
-    game0: { Name: "sh", Position: { left: 67, top: 47 }, Boat: { startLeft: 75, endLeft: 75, startTop: 50, endTop: 50, inverse: 0 } },
-    game1: { Name: "hk", Position: { left: 61, top: 51 }, Boat: { startLeft: 65, endLeft: 55, startTop: 50, endTop: 55, inverse: 0, a: 0.056, b: -7.2, c: 281 } },
-    game2: { Name: "sy", Position: { left: 75, top: 69 }, Boat: { startLeft: 62, startTop: 55, endLeft: 80, endTop: 72, inverse: 1, a: -0.22, b: 28.53, c: -845.87 } },
-    game3: { Name: "kpt", Position: { left: 18.8, top: 67 }, Boat: { startLeft: 80, endLeft: 25, startTop: 72, endTop: 77, inverse: 0, a: -0.008, b: 0.889, c: 52.85 } },
-    game4: { Name: "bn", Position: { left: 34, top: 67 }, Boat: { startLeft: 60, endLeft: 30, startTop: 77, endTop: 74, inverse: 0, a: -0.0022, b: 0.3, c: 67 } },
+    game0: { Name: "sh", Letter: { left: 82, top: 58 }, Position: { left: 81.5, top: 54 }, Boat: { startLeft: 75, endLeft: 75, startTop: 50, endTop: 50, inverse: 0 } },
+    game1: { Name: "hk", Letter: { left: 78, top: 60 }, Position: { left: 77, top: 56 }, Boat: { startLeft: 65, endLeft: 55, startTop: 50, endTop: 55, inverse: 0, a: 0.056, b: -7.2, c: 281 } },
+    game2: { Name: "sy", Letter: { left: 92, top: 73 }, Position: { left: 92, top: 69 }, Boat: { startLeft: 76, startTop: 64, endLeft: 82, endTop: 75.5, inverse: 1, a: -0.268, b: 37.95, c: -1255.31 } },
+    game3: { Name: "kpt", Letter: { left: 44, top: 72 }, Position: { left: 44, top: 68.4 }, Boat: { startLeft: 82, startTop: 75.5, endLeft: 45, endTop: 75, inverse: 0, a: -0.0131, b: 1.6928, c: 25.386 } },
+    game4: { Name: "bn", Letter: { left: 22, top: 70 }, Position: { left: 21.5, top: 66 }, Boat: { startLeft: 60, endLeft: 30, startTop: 77, endTop: 74, inverse: 0, a: -0.0022, b: 0.3, c: 67 } },
+
     game5: { Name: "ly", Position: { left: 28, top: 58 }, Boat: { startLeft: 40, startTop: 76, endLeft: 23, endTop: 65, inverse: 0, a: 0.0461, b: -2.256, c: 92.51 } },
     game6: { Name: "ny", Position: { left: 35.5, top: 42 }, Boat: { startLeft: 22, startTop: 62, endLeft: 28, endTop: 48, inverse: 3, a: 0.1198, b: -13.63, c: 406.5 } },
     game7: { Name: "ld", Position: { left: 50.8, top: 50 }, Boat: { startLeft: 10, startTop: 45, endLeft: 58, endTop: 53, inverse: 2, a: 0.00417, b: -0.1167, c: 45.75 } },
@@ -99,8 +95,8 @@ var gameInfo = {
 var userInfo = {
     userId: null,
     userAllGameOk: false,
-    nowUserPlayedIndex: 3,
-    userGameInfo: { game0: "S", game1: "A", game2: "A", game3: "A", game4: "B", game5: "B", game6: "B", game7: "B", game8: null, game9: null },
+    nowUserPlayedIndex: 2,
+    userGameInfo: { game0: "S", game1: "A", game2: null, game3: null, game4: null, game5: null, game6: null, game7: null, game8: null, game9: null },
     currentGameScore:
         {
             game0: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
@@ -121,7 +117,9 @@ for (var i = 0; i < 10; i++) {
         questionInfo[i][j] = { question: '城市I的第J个问题是什么？', answer1: "A选项", answer2: "B选项", answer3: "C选项", correctNo: 1 };
     }
 }
+var $j;
 $(function () {
+    $j = jQuery.noConflict();
     $('.rule-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 99);
     })
@@ -130,27 +128,26 @@ $(function () {
     })
     $('.xunbao-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        setTimeout(function () { SetBoatAndPosition(); }, 1000);
-
-
-   
-
-
+        if (mapInited == false) {//地图还未设置，则设置地图
+            setTimeout(function () {
+                SetPositionAndScore();
+                SetBoatAnimation();
+                mapInited = true;
+            }, 600);
+        }
 
     })
-
-
 
     $('.result-next').singleTap(function () {
 
         userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        mySwipe.next()
-
         setTimeout(function () {
-            SetBoatAndPosition();
-            GameReset();
-        }, 1000);
+            SetPositionAndScore();
+            SetBoatAnimation();
+            mapInited = true;
+        }, 600);
+        GameReset();
 
 
         // InitCurrentMap();
@@ -158,12 +155,21 @@ $(function () {
     $('.result-return').singleTap(function () {
         //$('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        setTimeout(function () {
-            SetBoatAndPosition();
-            GameReset();
-        }, 1000);
+        SetPositionAndScore();
+        GameReset();
+
 
         // InitCurrentMap();
+    })
+
+    $('.position').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, "city-" + gameInfo["game" + userInfo.nowUserPlayedIndex].Name);
+        setTimeout(function () {
+            pageCtl.pageMove(pageCtl.effects.fade, "question");
+            setTimeout(function () {
+                QuestionStart();
+            }, 1000);
+        }, 2000)
     })
 
 
@@ -238,10 +244,6 @@ function QuestionInit() {
                 SetUserCurrentScore(currentAnswerNums, currentAnswerCorrectNums, timer_time["timer" + userInfo.nowUserPlayedIndex]);
                 $(this).append("<font style='color:green;font-weight:bolder'>&nbsp;√</font>");
                 setTimeout(function () {
-                    if (currentAnswerCorrectNums > 5) {
-                        OneCitySuccess();
-                        return false;
-                    }
                     if (nextQuestionId > maxQuestionIndex) {
                         OneCitySuccess();
                         return false;
@@ -256,14 +258,8 @@ function QuestionInit() {
             else {
                 $(this).append("<font style='color:red;font-weight:bolder'>&nbsp;×</font>");
                 setTimeout(function () {
-                    if (maxQuestionIndex + 1 - currentAnswerNums + currentAnswerCorrectNums < 6) {
-                        //failed
-                        alert("您已答错太多，请重新再试！");
-                    }
-                    else {
                         $('#question_' + nowQuestionId).addClass("hide");
-                        $('#question_' + nextQuestionId).removeClass("hide");
-                    }
+                        $('#question_' + nextQuestionId).removeClass("hide");        
                 }, 300);
             }
         })
@@ -273,8 +269,6 @@ function QuestionInit() {
 function SetUserCurrentScore(answerNums, answerCorrectNums, answerTime) {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums = answerNums;
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime = (answerTime / 100).toFixed(2);
-    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (answerCorrectNums / answerNums).toFixed(2);
-    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = "S";
 }
 function GetCityQuestionInfo(cityId) {
     $('.testend').text("[测试]第" + cityId + "个城市的十个题目，点击进入下一步");
@@ -295,7 +289,7 @@ function InitCurrentMap() {
             $('#position').remove();
             $('#boat').remove();
         },
-        transitionEnd: function (index, elem) { 
+        transitionEnd: function (index, elem) {
             $('#position').remove();
             $('#boat').remove();
             //判断如果当前用户玩到第N张图，则在滑动到第N张时，轮船移动
@@ -415,19 +409,93 @@ function OneCitySuccess() {
     $('.using-time-span').text("0.00S");
     timer_time["timer" + userInfo.nowUserPlayedIndex] = 0;
     $('.question-div-text').html("");
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (currentAnswerCorrectNums / (maxQuestionIndex+1)).toFixed(2);
+    //根据算法求得等级
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = "S";
+    //上传分数
+    userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
     ShowResult();
 }
 //显示结果
 function ShowResult() {
-    var level = "D";//相关算法 SABCDE
+    var level = userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex];
     $(".result-board").attr("src", "img/result-board-" + level + ".png");
     $(".result-letter").attr("src", "img/result-" + level + ".png");
-    $('.page-' + pageCtl.currentPageNumber).addClass("hide").removeClass("page-current");
-    $('.page-result').removeClass("hide").addClass("page-current");
-    pageCtl.currentPageNumber = "result";
-    // pageCtl.pageMove(pageCtl.effects.fade, "result");
+    pageCtl.pageMove(pageCtl.effects.fade, "result");
 }
 //设置已完成的城市地图上的成绩
 function SetScoreInCity(cityId) {
     userInfo.currentGameScore["game" + cityId].scoreLevel
 }
+
+/*new*/
+
+function SetPositionAndScore() {
+    $('.position').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.left + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.top + '%');
+    var level = "";
+    for (var i = 0; i < 10; i++) {
+        if ((level = userInfo.userGameInfo["game" + i]) != null) {
+            if ($('#letter-game-' + i).size() == 0) {
+                var letter = "<img id='letter-game-" + i + "' class='letter' src='img/letter-" + level + ".png'/>";
+                $('.page-2').append($(letter));
+            }
+            else {
+
+            }
+            $('#letter-game-' + i).css('left', gameInfo["game" + i].Letter.left + '%').css('top', gameInfo["game" + i].Letter.top + '%');
+            if (i == userInfo.nowUserPlayedIndex) {//避免等级图片和标志重合
+                $('.position').css('left', (parseInt($('.position').css("left").substring(0, $('.position').css("left").indexOf("%"))) - 3) + "%");
+            }
+            $j('#letter-game-' + i).animate({
+                opacity: 1
+            }, 500, 'linear');
+        }
+    }
+    $j('.position').animate({
+        opacity: 1
+    }, 500, 'linear');
+}
+function SetBoatAnimation() {
+    $('.page-2 .boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%')
+    $j('.page-2 .boat').animate({
+        opacity: 1
+    }, 500, 'linear');
+    setTimeout(function () {
+        if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 0) {//x从大到小
+            var m = $('.page-2 .boat');
+            var x = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft;
+            var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
+            var b = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.b;
+            var c = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.c;
+
+            var t = setInterval(function () {
+                var top = a * x * x + b * x + c;
+                $(m).css('left', x + '%').css('top', top + '%');
+                x = x - 0.1;
+                if (x < gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endLeft) {
+                    clearInterval(t);
+                }
+            }, 10)
+        }
+        else if (gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.inverse == 1) {//y变为x，从小到大
+            var m = $('.page-2 .boat');
+            var y = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop;
+            var a = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.a;
+            var b = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.b;
+            var c = gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.c;
+
+            var t = setInterval(function () {
+                var left = a * y * y + b * y + c;
+                $(m).css('left', left + '%').css('top', y + '%');
+                console.log("x=" + left + ";y=" + y);
+                y = y + 0.05;
+                if (y > gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.endTop) {
+                    clearInterval(t);
+                }
+
+            }, 10)
+        }
+    }, 500);
+
+}
+

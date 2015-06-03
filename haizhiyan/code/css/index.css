@@ -36,7 +36,7 @@ img {
 }
 
 .page-0 {
-    background-color:#DFD3EB;
+    background-color: #DFD3EB;
 }
 
     .page-0 .loading {
@@ -90,6 +90,31 @@ img {
         top: 60%;
         left: 52%;
         width: 40%;
+    }
+
+.page-2 {
+    background-image: url("../img/worldmap.png");
+}
+
+    .page-2 .normal-return-btn {
+        top: 85%;
+        left: 65%;
+        width: 30%;
+    }
+    .page-2 .position{
+        opacity:0;
+        width:25px;
+        z-index:999;
+    }
+    .page-2 .letter{
+        opacity:0;
+        width:20px;
+        z-index:998;
+    }
+    .page-2 .boat{
+        opacity:0;
+        width:12%;
+        z-index:997;
     }
 
 .page-question {

@@ -7,7 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="js/zepto.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/touch.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/ani.js"></script>
     <script src="js/index.js"></script>
     <link href="css/haoest.min.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
@@ -44,75 +47,22 @@
     </style>
 </head>
 <body onload="pageCtl.loadComplete()">
-    <div class="page page-0" style="z-index:999">
+    <div class="page page-0">
         <div class="loading">
             <img class="loading-img ani-rotateRight ani-iteration-infinite" src="img/loading.png" />
             <div>Loading</div>
         </div>
     </div>
-    <div class="page-1 page " style="z-index:998">
+    <div class="page-1 page hide" >
         <img class="xunbao-btn" src="img/xunbao-btn.png" />
         <img class="rule-btn" src="img/rule-btn.png" />
         <img class="rank-btn" src="img/rank-btn.png" />
         <img class="return-btn" src="img/return-btn.png" />
     </div>
-    <div class="page-2 page" style="z-index:997">
-        <header style="height:100%;width:100%;position:absolute">
-            <div id="slider" class="swipe" style="visibility: visible; height: 100%; width: 100%;">
-                <div class="swipe-wrap" style="height: 100%; width: 100%;">
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/sh-hk.png) center no-repeat; height: 100%; background-size: 100% 100%"> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/sh-hk.png) center no-repeat; height: 100%; background-size: 100% 100%"> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/hk-sn.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/sn-kpt.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/kpt-bn.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/bn-ly.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/ly-ny.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/ny-ld.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/ld-wns.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                    <figure style="height: 100%; width: 100%;">
-                        <div class="wrap" style="height: 100%; width: 100%;">
-                            <div class="image" style="background: url(img/maps/wns-ms.png) center no-repeat; height: 100%; background-size: 100% 100%; "> </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </header>
+    <div class="page-2 page hide" >
+        <img class="normal-return-btn" src="img/normal-return-btn.png" />
+        <img class="position" src="img/position.png" />
+        <img class="boat" src="img/boat.png" />
     </div>
     <div class="page-city-sh page hide" style="background-image:url('img/cities/sh.png')">
 
@@ -148,6 +98,17 @@
     </div>
     <script src="js/swipe.js"></script>
     <div class="hide">
+        <img src="img/rank-btn.png" />
+        <img src="img/return-btn.png" />
+        <img src="img/rule-back.png" />
+        <img src="img/rule-btn.png" />
+        <img src="img/xunbao-btn.png" />
+        <img src="img/letter-A.png" />
+        <img src="img/letter-B.png" />
+        <img src="img/letter-C.png" />
+        <img src="img/letter-D.png" />
+        <img src="img/letter-E.png" />
+        <img src="img/letter-S.png" />
         <img src="img/result-A.png" />
         <img src="img/result-B.png" />
         <img src="img/result-C.png" />
