@@ -40,6 +40,7 @@ var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
+var maxTotalQuestions=10;//每个城市最多存在的题目，应该是15个
 var maxQuestionIndex = 9;//每个城市最多的题目索引号，即最多10个题目
 var maxWrongAnswers = 4;//最多允许答错的题目数
 var currentAnswerNums = 0;//当前用户的答题数目(0-10)
@@ -62,12 +63,12 @@ var timer_time = {
     timer9: 0.00
 }
 var questionInfo = {
-    game0: [{ question: "上海是什么市？呵呵呵 aaaaa呵呵daddada呵呵哈哈哈sasa", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-        { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "我是谁1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game0: [{ question: "1上海是什么市？呵呵呵 aaaaa呵呵daddada呵呵哈哈哈sasa", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
+        { question: "2我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "3上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+        { question: "4我是谁1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "5上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+        { question: "6我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "7上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+        { question: "8我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "9上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
+        { question: "10我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
     ],
     game1: [{ question: "上海是什么市？香港", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
     { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
@@ -275,7 +276,15 @@ function QuestionInit() {
 
     var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex].slice(0);
     maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
-    var perQuestion = new Array();
+    var random=new Array();
+    random = GetRandom1to10();
+    for (var i = 0; i < maxTotalQuestions; i++) {
+        var tmp = currentCityQuestions[i];
+        currentCityQuestions[i] = currentCityQuestions[random[i]];
+        currentCityQuestions[random[i]] = tmp;
+    }
+
+        var perQuestion = new Array();
     var i = 0;
     while ((perQuestion = currentCityQuestions.shift()) != null) {
         if (nowQuestion == -1) {
@@ -587,4 +596,22 @@ function strlen(str) {
         }
     }
     return len;
+}
+function GetRandom1to10() {
+    var n = new Array();
+    var m = new Array();
+    var i = 0;
+
+    while (i <maxTotalQuestions ) {
+        var x = Math.floor(Math.random()*maxTotalQuestions);
+        if (n[x] == 1) {
+
+        }
+        else {
+            n[x] = 1;
+            m[i] = x;
+            i++;
+        }
+    }
+    return m;
 }
