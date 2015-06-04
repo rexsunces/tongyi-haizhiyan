@@ -40,7 +40,7 @@ var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
-var maxTotalQuestions=10;//每个城市最多存在的题目，应该是15个
+var maxTotalQuestions = 10;//每个城市最多存在的题目，应该是15个
 var maxQuestionIndex = 9;//每个城市最多的题目索引号，即最多10个题目
 var maxWrongAnswers = 4;//最多允许答错的题目数
 var currentAnswerNums = 0;//当前用户的答题数目(0-10)
@@ -143,27 +143,28 @@ var gameInfo = {
     game4: { Name: "bn", Letter: { left: 22, top: 71 }, Position: { left: 21.5, top: 66 }, Boat: { startLeft: 45, startTop: 75, endLeft: 15, endTop: 73, inverse: 0, a: -0.00889, b: 0.6, c: 66 } },
     game5: { Name: "ly", Letter: { left: 7, top: 62 }, Position: { left: 5.5, top: 57.5 }, Boat: { startLeft: 15, startTop: 73, endLeft: 5, endTop: 65, inverse: 0, a: 0, b: 0.8, c: 61 } },
     game6: { Name: "ny", Letter: { left: 13, top: 48 }, Position: { left: 12, top: 43.5 }, Boat: { startLeft: 5, startTop: 65, endLeft: 4, endTop: 50, inverse: 3, a: 0.0351, b: -3.972, c: 114.8 } },
-    game7: { Name: "ld", Letter: { left: 48, top: 53 }, Position: { left: 48, top: 50 }, Boat: { startLeft: 4, startTop: 50, endLeft: 54, endTop: 52, inverse: 2, a: 0.00557, b: -0.27897, c: 50.8865 } },
-    game8: { Name: "wns", Letter: { left: 40, top: 55 }, Position: { left: 39.5, top: 52.5 }, Boat: { startLeft: 54, startTop: 52, endLeft: 30, endTop: 56, inverse: 0, a: 0, b: -0.1667, c: 61 } },
+    game7: { Name: "ld", Letter: { left: 49, top: 54 }, Position: { left: 48, top: 50 }, Boat: { startLeft: 4, startTop: 50, endLeft: 54, endTop: 52, inverse: 2, a: 0.00557, b: -0.27897, c: 50.8865 } },
+    game8: { Name: "wns", Letter: { left: 41, top: 56 }, Position: { left: 39.5, top: 52.5 }, Boat: { startLeft: 54, startTop: 52, endLeft: 30, endTop: 56, inverse: 0, a: 0, b: -0.1667, c: 61 } },
     game9: { Name: "ms", Letter: { left: 43, top: 59 }, Position: { left: 42, top: 55 }, Boat: { startLeft: 30, startTop: 56, endLeft: 35, endTop: 61, inverse: 2, a: 0, b: 1, c: 26 } }
 }
 var userInfo = {
     userId: null,
     userAllGameOk: false,
     nowUserPlayedIndex: 0,
-    userGameInfo: { game0: null, game1: null, game2: null, game3: null, game4: null, game5: null, game6: null, game7: null, game8: null, game9: null },
+     userGameInfo: { game0: null, game1: null, game2: null, game3: null, game4: null, game5: null, game6: null, game7: null, game8: null, game9: null },
+    //userGameInfo: { game0: "B", game1: "B", game2: "B", game3: "B", game4: "B", game5: "B", game6: "S", game7: "S", game8: "S", game9: "S" },
     currentGameScore:
         {
-            game0: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game1: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game2: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game3: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game4: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game5: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game6: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game7: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game8: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game9: { answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null }
+            game0: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game1: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game2: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game3: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game4: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game5: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game6: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game7: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game8: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game9: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null }
         }
 }
 var rankInfo = [
@@ -185,13 +186,24 @@ $(function () {
     })
     $('.xunbao-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        if (mapInited == false) {//地图还未设置，则设置地图
-            setTimeout(function () {
-                SetPosition();
-                SetScoreAboveCity();
-                SetBoatAnimation();
-                mapInited = true;
-            }, 600);
+        if (userInfo.userAllGameOk == true) {
+            if (mapInited == false) {
+                setTimeout(function () {
+                    SetPositions();
+                    SetScoreAboveCity();
+                    mapInited = true;
+                }, 600);
+            }
+        }
+        else {
+            if (mapInited == false) {//地图还未设置，则设置地图
+                setTimeout(function () {
+                    SetPosition();
+                    SetScoreAboveCity();
+                    SetBoatAnimation();
+                    mapInited = true;
+                }, 600);
+            }
         }
 
     })
@@ -202,10 +214,10 @@ $(function () {
         var rankstr = "<tr><th class='th-xuhao'>序号</th><th class='th-normal'>昵称</th><th class='th-normal'>答题次数</th><th class='th-normal'>答题时间</th><th class='th-normal'>正确题数</th>";
         for (var i = 0; i < myRankInfo.length; i++) {
             rankstr += "<tr>" +
-                "<td class='th-align-center'>" +parseInt( i + 1) +
+                "<td class='th-align-center'>" + parseInt(i + 1) +
                 "</td><td class='th-align-center'>" + formatPalyerName(myRankInfo[i].col2 == null ? myRankInfo[i].userId : myRankInfo[i].col2) +
                 "</td><td class='th-align-center'>" + myRankInfo[i].col3 +
-                "</td><td class='th-align-center'>" + myRankInfo[i].col4 +" S"+
+                "</td><td class='th-align-center'>" + myRankInfo[i].col4 + " S" +
                 "</td><td class='th-align-center'>" + myRankInfo[i].col5 +
                 "</td>" +
                 "</tr>";
@@ -217,28 +229,40 @@ $(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 1);
     })
     $('.result-next').singleTap(function () {
-        ActionPreHidePositionAndBoat();//动画优化，先隐藏船和定位标志
-        userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
-        pageCtl.pageMove(pageCtl.effects.fade, 2);
-        setTimeout(function () {
-            SetPosition();
-            SetScoreAboveCity();
-            SetBoatAnimation();
-            mapInited = true;
-        }, 600);
+        if (userInfo.userAllGameOk != true) {
+            ActionPreHidePositionAndBoat();//动画优化，先隐藏船和定位标志
+            userInfo.nowUserPlayedIndex = userInfo.nowUserPlayedIndex + 1;
+            pageCtl.pageMove(pageCtl.effects.fade, 2);
+            setTimeout(function () {
+                SetPosition();
+                SetScoreAboveCity();
+                SetBoatAnimation();
+                mapInited = true;
+            }, 600);
+        }
+        else {
+            SetUpdateScoreAboveCity();
+            pageCtl.pageMove(pageCtl.effects.fade, 2);
+        }
         GameReset();
     })
     $('.result-return').singleTap(function () {
         //ActionPreHidePositionAndBoat();//动画优化，先隐藏船和定位标志
         //$('#boat').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startLeft + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Boat.startTop + '%').css('width', 30 + 'px').css('zIndex', '998');
         pageCtl.pageMove(pageCtl.effects.fade, 2);
-        SetPosition();
-        SetScoreAboveCity();
+        if (userInfo.userAllGameOk == true) {
+            //  SetPositions();
+            SetUpdateScoreAboveCity();
+        }
+        else {
+            SetPosition();
+            SetScoreAboveCity();
+        }
         GameReset();
     })
 
-    //地图上的标志点击时间
-    $('.position').singleTap(function () {
+    //地图上的标志点击事件
+    $('.default-position').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, "city-" + gameInfo["game" + userInfo.nowUserPlayedIndex].Name);
         setTimeout(function () {
             pageCtl.pageMove(pageCtl.effects.fade, "question");
@@ -264,19 +288,18 @@ function QuestionTimerStart() {
     }, 10);
 }
 function QuestionStart() {
-
-    GetCityQuestionInfo(userInfo.nowUserPlayedIndex);
-
-    QuestionTimerStart();
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes++;//答题次数+1
+    //GetCityQuestionInfo(userInfo.nowUserPlayedIndex);
     QuestionInit();
+    QuestionTimerStart();
 }
 
 //题目生成
 function QuestionInit() {
-
+    $('.question-div-text').html("");
     var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex].slice(0);
     maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
-    var random=new Array();
+    var random = new Array();
     random = GetRandom1to10();
     for (var i = 0; i < maxTotalQuestions; i++) {
         var tmp = currentCityQuestions[i];
@@ -284,7 +307,7 @@ function QuestionInit() {
         currentCityQuestions[random[i]] = tmp;
     }
 
-        var perQuestion = new Array();
+    var perQuestion = new Array();
     var i = 0;
     while ((perQuestion = currentCityQuestions.shift()) != null) {
         if (nowQuestion == -1) {
@@ -365,33 +388,28 @@ function SetUserCurrentScore(answerNums, answerCorrectNums, answerTime) {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums = answerNums;
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime = (answerTime / 100).toFixed(2);
 }
-function GetCityQuestionInfo(cityId) {
-    $('.testend').text("[测试]第" + cityId + "个城市的十个题目，点击进入下一步");
-    //发送请求，请求内容为城市Id cityId，即gamei的“i”
-    //返回城市cityId的十个随机题目数组（包括题目内容，三个选项以及正确结果，如下所示）
-    var questions = new Array;//ajax返回数组questions
-    for (var j = 0; j < questions.length; j++) {
-        questionInfo[cityId][j] = { question: questions[j].question, answer1: questions[j].answer1, answer2: questions[j].answer2, answer3: questions[j].answer3, correctNo: questions[j].correctNo };
-    }
-}
 
 //答题10道完毕
+//得分计算算法没有确定
 function ActionAnswerAll() {
     clearInterval(timer);
     $('.using-time-span').text("0.00S");
     timer_time["timer" + userInfo.nowUserPlayedIndex] = 0;
     $('.question-div-text').html("");
+    //正确率
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (currentAnswerCorrectNums / (maxQuestionIndex + 1)).toFixed(2);
+    var level = "";
     if (currentAnswerCorrectNums < 6) {
-        alert("你总共答对了" + currentAnswerCorrectNums + "题，答对6题可以进入下一关！");
-        pageCtl.pageMove(pageCtl.effects.fade, 2);
-        SetScoreAboveCity();
-        SetPosition();
-        GameReset();
+       // alert("你总共答对了" + currentAnswerCorrectNums + "题，答对6题可以进入下一关！");
+       // pageCtl.pageMove(pageCtl.effects.fade, 2);
+      //  SetScoreAboveCity();
+       // SetPosition();
+        // GameReset();
+        level = "E";
+        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
     }
     else {
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (currentAnswerCorrectNums / (maxQuestionIndex + 1)).toFixed(2);
-        //根据算法求得等级
-        var level = "";
+
         var _time = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime;
         //测试算法：
         if (_time < 2) {
@@ -415,21 +433,41 @@ function ActionAnswerAll() {
         userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
         //上传分数
         //ajax
-        /* 
-        //正确率
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate
-        //总共答题数目（无意义，都为10）
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums
-        //答题时间，格式：10.00
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime
-        //经计算的level级别 SABCDE
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel
-        */
 
-        //ajax发送成功后，对当前信息进行更新，更新最新城市的成绩
-        userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
-        ShowResult();
+        //正确率
+        var rate = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate
+        //总共答题数目（无意义，都为10）
+        //var userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums
+        //答题时间，格式：10.00
+        var myNumOfTimes = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes;
+        var mytime = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime;
+
+        if (myNumOfTimes >= 1 && myNumOfTimes <= 3) {
+            if (mytime <= 60) {
+                if (rate = 1) {
+                    // userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = "S";
+                }
+                else {
+
+                }
+            }
+        }
+        else if (myNumOfTimes <= 6) {
+
+        }
+        else if (myNumOfTimes <= 9) {
+
+        }
+        else if (myNumOfTimes <= 12) {
+
+        }
+
+        //经计算的level级别 SABCDE
+        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
     }
+    //ajax发送成功后，对当前信息进行更新，更新最新城市的成绩
+    userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
+    ShowResult();
 }
 //显示结果
 function ShowResult() {
@@ -446,7 +484,41 @@ function ActionPreHidePositionAndBoat() {
     $j('.position').css("opacity", "0");
     $j('.page-2 .boat').css("opacity", "0");
 }
+//用户玩过一轮之后的情况
+function SetPositions() {
+    $('.default-position').remove();
+    for (var i = 0; i < (maxQuestionIndex + 1) ; i++) {
+        var position = "<img gdata='" + i + "' id='position-game-" + i + "' class='position' src='img/position.png'/>";
+        $('.page-2').append($(position));
+        $('#position-game-' + i).css('left', gameInfo["game" + i].Position.left + '%').css('top', gameInfo["game" + i].Position.top + '%');
+        $j('#position-game-' + i).animate({
+            opacity: 1
+        }, 500, 'linear');
+    }
+    $('.position').each(function () {
+        $(this).singleTap(function () {
+            userInfo.nowUserPlayedIndex = $(this).attr("gdata");
+            pageCtl.pageMove(pageCtl.effects.fade, "city-" + gameInfo["game" + $(this).attr("gdata")].Name);
+            setTimeout(function () {
+                pageCtl.pageMove(pageCtl.effects.fade, "question");
+                setTimeout(function () {
+                    QuestionStart();
+                }, 1000);
+            }, 2000)
+        })
+    })
+}
+//非第一轮时，在地图上更新成绩
+function SetUpdateScoreAboveCity() {
+    for (var i = 0; i < (maxQuestionIndex + 1) ; i++) {
+        $('#letter-game-' + i).attr("src", "img/letter-" + userInfo.userGameInfo["game" + i] + ".png");
+        $('#letter-game-' + i).css('left', gameInfo["game" + i].Letter.left + '%').css('top', gameInfo["game" + i].Letter.top + '%');
+        $j('#letter-game-' + i).animate({
+            opacity: 1
+        }, 500, 'linear');
 
+    }
+}
 function SetPosition() {
     $('.position').css('left', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.left + '%').css('top', gameInfo["game" + userInfo.nowUserPlayedIndex].Position.top + '%');
     $j('.position').animate({
@@ -455,14 +527,15 @@ function SetPosition() {
 }
 function SetScoreAboveCity() {
     var level = "";
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < (maxQuestionIndex + 1) ; i++) {
         if ((level = userInfo.userGameInfo["game" + i]) != null) {
             if ($('#letter-game-' + i).size() == 0) {
                 var letter = "<img id='letter-game-" + i + "' class='letter' src='img/letter-" + level + ".png'/>";
                 $('.page-2').append($(letter));
             }
-            else {
-
+            //更新成绩
+            else if ($('#letter-game-' + i).size() != 0) {
+                $('#letter-game-' + i).attr("src", "img/letter-" + userInfo.userGameInfo["game" + i] + ".png");
             }
             $('#letter-game-' + i).css('left', gameInfo["game" + i].Letter.left + '%').css('top', gameInfo["game" + i].Letter.top + '%');
             //if (i == userInfo.nowUserPlayedIndex) {//避免等级图片和标志重合
@@ -602,8 +675,8 @@ function GetRandom1to10() {
     var m = new Array();
     var i = 0;
 
-    while (i <maxTotalQuestions ) {
-        var x = Math.floor(Math.random()*maxTotalQuestions);
+    while (i < maxTotalQuestions) {
+        var x = Math.floor(Math.random() * maxTotalQuestions);
         if (n[x] == 1) {
 
         }
