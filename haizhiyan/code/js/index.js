@@ -40,7 +40,7 @@ var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
-var maxTotalQuestions = 10;//每个城市最多存在的题目，应该是15个
+var maxTotalQuestions = 15;//每个城市最多存在的题目，应该是15个
 var maxQuestionIndex = 9;//每个城市最多的题目索引号，即最多10个题目
 var maxWrongAnswers = 4;//最多允许答错的题目数
 var currentAnswerNums = 0;//当前用户的答题数目(0-10)
@@ -81,62 +81,78 @@ var questionInfo = {
         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game2: [{ question: "上海是什么市？悉尼", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game2: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game3: [{ question: "上海是什么市？开普敦", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game3: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game4: [{ question: "上海是什么市？布宜诺斯艾利斯", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game4: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game5: [{ question: "上海是什么市？里约", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game5: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+         { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+         { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+         { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+         { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+         { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game6: [{ question: "上海是什么市？纽约", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game6: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game7: [{ question: "上海是什么市？伦敦", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game7: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+         { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+         { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+         { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+         { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+         { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game8: [{ question: "上海是什么市？威尼斯", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game8: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game9: [{ question: "上海是什么市？马赛", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
-    ]
+    game9: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    ],
 
 }
 var gameInfo = {
