@@ -40,6 +40,7 @@ var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
+var questionStartFlag=false;
 var maxTotalQuestions = 15;//每个城市最多存在的题目，应该是15个
 var maxQuestionIndex = 9;//每个城市最多的题目索引号，即最多10个题目
 var maxWrongAnswers = 4;//最多允许答错的题目数
@@ -231,12 +232,11 @@ $(function () {
     $('.rank-btn').singleTap(function () {
         $('.rank-table').html("");
         var myRankInfo = rankInfo;//此处的rankinfo应该是ajax获取
-        var rankstr = "<tr><th class='th-xuhao'>序号</th><th class='th-normal'>昵称</th><th class='th-normal'>答题次数</th><th class='th-normal'>答题时间</th><th class='th-normal'>正确题数</th>";
+        var rankstr = "<tr><th class='th-xuhao'>序号</th><th class='th-normal'>昵称</th><th class='th-normal'>答题时间</th><th class='th-normal'>正确题数</th>";
         for (var i = 0; i < myRankInfo.length; i++) {
             rankstr += "<tr>" +
                 "<td class='th-align-center'>" + parseInt(i + 1) +
                 "</td><td class='th-align-center'>" + formatPalyerName(myRankInfo[i].col2 == null ? myRankInfo[i].userId : myRankInfo[i].col2) +
-                "</td><td class='th-align-center'>" + myRankInfo[i].col3 +
                 "</td><td class='th-align-center'>" + myRankInfo[i].col4 + " S" +
                 "</td><td class='th-align-center'>" + myRankInfo[i].col5 +
                 "</td>" +
@@ -288,7 +288,8 @@ $(function () {
             pageCtl.pageMove(pageCtl.effects.fade, "question");
             setTimeout(function () {
                 QuestionStart();
-            }, 1000);
+            },
+                1000)
         }, 2000)
     })
 
@@ -311,17 +312,17 @@ function QuestionStart() {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes++;//答题次数+1
     //GetCityQuestionInfo(userInfo.nowUserPlayedIndex);
     QuestionInit();
-    QuestionTimerStart();
+   // QuestionTimerStart();
 }
 
 //题目生成
 function QuestionInit() {
     $('.question-div-text').html("");
     var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex].slice(0);
-    maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
+   // maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
     var random = new Array();
     random = GetRandom1to10();
-    for (var i = 0; i < maxTotalQuestions; i++) {
+    for (var i = 0; i < (maxQuestionIndex+1); i++) {
         var tmp = currentCityQuestions[i];
         currentCityQuestions[i] = currentCityQuestions[random[i]];
         currentCityQuestions[random[i]] = tmp;
@@ -355,6 +356,10 @@ function QuestionInit() {
     $('.question-div').css("height", $('.question-div-text').height() + "px");
     $('.answer').each(function () {
         $(this).singleTap(function () {
+            if (questionStartFlag==false) {
+                QuestionTimerStart();
+                questionStartFlag = true;
+            }
             if (questionClicked[$(this).attr("id")] == 1) {
                 return false;
             }
@@ -413,6 +418,7 @@ function SetUserCurrentScore(answerNums, answerCorrectNums, answerTime) {
 //得分计算算法没有确定
 function ActionAnswerAll() {
     clearInterval(timer);
+    questionStartFlag = false;
     $('.using-time-span').text("0.00S");
     timer_time["timer" + userInfo.nowUserPlayedIndex] = 0;
     $('.question-div-text').html("");
@@ -705,8 +711,8 @@ function GetRandom1to10() {
     var m = new Array();
     var i = 0;
 
-    while (i < maxTotalQuestions) {
-        var x = Math.floor(Math.random() * maxTotalQuestions);
+    while (i < (maxQuestionIndex+1)) {
+        var x = Math.floor(Math.random() * (maxTotalQuestions-1));
         if (n[x] == 1) {
 
         }
