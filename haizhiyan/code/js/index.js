@@ -63,12 +63,14 @@ var timer_time = {
     timer9: 0.00
 }
 var questionInfo = {
-    game0: [{ question: "1上海是什么市？呵呵呵 aaaaa呵呵daddada呵呵哈哈哈sasa", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-        { question: "2我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "3上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "4我是谁1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "5上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "6我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "7上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "8我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "9上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-        { question: "10我是谁？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game0: [{ question: "中国·上海的美称是什么？", answers: ["A: 东方巴黎", "B：东方明珠", "C：东方魔都"], correctNo: 0 },
+        { question: "中国最大的外贸港口是哪个城市？", answers: ["A：天津", "B：上海", "C：青岛"], correctNo: 1 }, { question: "统一海之言绿色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 2 },
+        { question: "以下哪一个是上海新八景？", answers: ["A：海天旭日", "B：黄浦秋涛", "C：十里霓虹"], correctNo: 2 }, { question: "“豆蔻”是指多少岁？", answers: ["A：13岁", "B：15岁", "C：20岁"], correctNo: 0 },
+        { question: "“四羊方尊”是哪个朝代的文物？", answers: ["A：周", "B：商", "C：夏"], correctNo: 1 }, { question: "以下哪个是上海老八景？", answers: ["A：外滩晨钟", "B：摩天览胜", "C：龙华晚钟"], correctNo: 2 },
+        { question: "《登高》是唐代哪位诗人所写的？", answers: ["A：李白", "B：杜甫", "C：王维"], correctNo: 1 }, { question: "下面不是“四书”的是哪一个？", answers: ["A：《尚书》", "B：《大学》", "C：《孟子》"], correctNo: 0 },
+        { question: "下列传统节日中，哪一个是来源于二十四节气？", answers: ["A：元宵节", "B：中秋节", "C：清明节"], correctNo: 2 }, { question: "下列文学家中，不属于“唐宋八大家”的是？", answers: ["A：王勃", "B：柳宗元", "C：王安石"], correctNo: 0 },
+        { question: "下面哪个字常用作表示顺序的第五位？", answers: ["A：戌", "B：戊", "C：戍"], correctNo: 1 }, { question: "戛纳电影节在哪国举办？", answers: ["A：英国", "B：美国", "C：法国"], correctNo: 2 },
+        { question: "六一居士”是谁的别号？", answers: ["A：欧阳修", "B：关汉卿", "C：李清照"], correctNo: 0 }, { question: "《本草纲目》的作者是谁？", answers: ["A：华佗", "B：李时珍", "C：扁鹊"], correctNo: 1 }
     ],
     game1: [{ question: "上海是什么市？香港", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
     { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
