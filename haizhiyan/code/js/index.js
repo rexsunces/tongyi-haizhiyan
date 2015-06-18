@@ -72,12 +72,14 @@ var questionInfo = {
         { question: "下面哪个字常用作表示顺序的第五位？", answers: ["A：戌", "B：戊", "C：戍"], correctNo: 1 }, { question: "戛纳电影节在哪国举办？", answers: ["A：英国", "B：美国", "C：法国"], correctNo: 2 },
         { question: "六一居士”是谁的别号？", answers: ["A：欧阳修", "B：关汉卿", "C：李清照"], correctNo: 0 }, { question: "《本草纲目》的作者是谁？", answers: ["A：华佗", "B：李时珍", "C：扁鹊"], correctNo: 1 }
     ],
-    game1: [{ question: "上海是什么市？香港", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港1？", answers: ["A、上海1", "B、上海人1", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
-    { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }
+    game1: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
+        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
+        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
+        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
+        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
+        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
+        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
+        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
     game2: [{ question: "上海是什么市？悉尼", answers: ["A、直辖市", "B、地级市", "C、县级市", "D、我不知道~"], correctNo: 0 },
     { question: "我是谁香港？", answers: ["A、上海", "B、上海人", "C、答案C是错的", "D、我不知道（正确）~"], correctNo: 3 }, { question: "上海简称是啥？", answers: ["A、呵呵", "B、小黄", "C、沪", "D、我不知道~"], correctNo: 2 },
@@ -153,20 +155,20 @@ var userInfo = {
     userId: null,
     userAllGameOk: false,
     nowUserPlayedIndex: 0,
-     userGameInfo: { game0: null, game1: null, game2: null, game3: null, game4: null, game5: null, game6: null, game7: null, game8: null, game9: null },
+    userGameInfo: { game0: null, game1: null, game2: null, game3: null, game4: null, game5: null, game6: null, game7: null, game8: null, game9: null },
     //userGameInfo: { game0: "B", game1: "B", game2: "B", game3: "B", game4: "B", game5: "B", game6: "S", game7: "S", game8: "S", game9: "S" },
     currentGameScore:
         {
-            game0: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game1: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game2: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game3: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game4: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game5: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game6: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game7: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game8: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
-            game9: { answerNumOfTimes: 0, answerNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null }
+            game0: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game1: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game2: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game3: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game4: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game5: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game6: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game7: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game8: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null },
+            game9: { answerNumOfTimes: 0, answerNums: -1, answerCorrectNums: -1, answerTime: -1, answerCorrectRate: -1, scoreLevel: null }
         }
 }
 var rankInfo = [
@@ -321,7 +323,7 @@ function QuestionInit() {
                 "<span id='" + i + "_" + 0 + "' class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/><br/>" +
                  "<span id='" + i + "_" + 1 + "' class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/><br/>" +
                   "<span id='" + i + "_" + 2 + "' class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/><br/>" +
-                   "<span id='" + i + "_" + 3 + "' class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/><br/></div>";
+                   "</div>";
             $('.question-div-text').append(question);
         }
         else {
@@ -329,7 +331,7 @@ function QuestionInit() {
                 "<span id='" + i + "_" + 0 + "' class='answer' data_qid='" + i + "' data_a='0' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[0] + "</span><br/><br/>" +
                  "<span id='" + i + "_" + 1 + "' class='answer' data_qid='" + i + "' data_a='1' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[1] + "</span><br/><br/>" +
                   "<span id='" + i + "_" + 2 + "' class='answer' data_qid='" + i + "' data_a='2' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[2] + "</span><br/><br/>" +
-                   "<span id='" + i + "_" + 3 + "' class='answer' data_qid='" + i + "' data_a='3' data_correct='" + perQuestion.correctNo + "'>" + perQuestion.answers[3] + "</span><br/><br/></div>";
+                   "</div>";
             $('.question-div-text').append(question);
         }
         i++;
@@ -401,75 +403,85 @@ function ActionAnswerAll() {
     //正确率
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate = (currentAnswerCorrectNums / (maxQuestionIndex + 1)).toFixed(2);
     var level = "";
-    if (currentAnswerCorrectNums < 6) {
-       // alert("你总共答对了" + currentAnswerCorrectNums + "题，答对6题可以进入下一关！");
-       // pageCtl.pageMove(pageCtl.effects.fade, 2);
-      //  SetScoreAboveCity();
-       // SetPosition();
-        // GameReset();
-        level = "E";
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
-    }
-    else {
+    //正确率
+    var rate = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate;
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectNums = rate * 10;
+    //总共答题数目（无意义，都为10）
+    //var userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums
+    var myNumOfTimes = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes;
+    //答题时间，格式：10.00
+    var mytime = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime;
+    var myCorrectNums = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectNums;
+    level = CalLevel(mytime, rate);
+    //经计算的level级别 SABCDE
+    userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
 
-        var _time = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime;
-        //测试算法：
-        if (_time < 2) {
-            level = "S";
-        }
-        else if (_time < 10) {
-            level = "A";
-        }
-        else if (_time < 15) {
-            level = "B";
-        }
-        else if (_time < 20) {
-            level = "C";
-        }
-        else if (_time < 25) {
-            level = "D";
-        }
-        else {
-            level = "E";
-        }
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
-        //上传分数
-        //ajax
-
-        //正确率
-        var rate = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectRate
-        //总共答题数目（无意义，都为10）
-        //var userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNums
-        //答题时间，格式：10.00
-        var myNumOfTimes = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes;
-        var mytime = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime;
-
-        if (myNumOfTimes >= 1 && myNumOfTimes <= 3) {
-            if (mytime <= 60) {
-                if (rate = 1) {
-                    // userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = "S";
-                }
-                else {
-
-                }
-            }
-        }
-        else if (myNumOfTimes <= 6) {
-
-        }
-        else if (myNumOfTimes <= 9) {
-
-        }
-        else if (myNumOfTimes <= 12) {
-
-        }
-
-        //经计算的level级别 SABCDE
-        userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
-    }
+    var submitInfo = { "userId": userInfo.userId, "gameId": userInfo.nowUserPlayedIndex, "time": mytime, "correctNums": myCorrectNums, "level": level };
     //ajax发送成功后，对当前信息进行更新，更新最新城市的成绩
     userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
     ShowResult();
+}
+function CalLevel(time, rate) {
+    var level_t = "";
+    var level_t_i = 0;
+    var level_r = "";
+    var level_r_i = 0;
+    if (time <= 60) {
+        level_t = "S";
+        level_t_i = 5;
+    }
+    else if (time <= 80) {
+        level_t_i = 4;
+        level_t = "A";
+    }
+    else if (time <= 100) {
+        level_t_i = 3;
+        level_t = "B";
+    }
+    else if (time <= 120) {
+        level_t_i = 2;
+        level_t = "C";
+    }
+    else if (time <= 140) {
+        level_t_i = 1;
+        level_t = "D";
+    }
+    else {
+        level_t_i = 0;
+        level_t = "E";
+    }
+
+    if (rate >= 1) {
+        level_r_i = 5;
+        level_r = "S";
+    }
+    else if (rate >= 0.9) {
+        level_r_i = 4;
+        level_r = "A";
+    }
+    else if (rate >= 0.8) {
+        level_r_i = 3;
+        level_r = "B";
+    }
+    else if (rate >= 0.7) {
+        level_r_i = 2;
+        level_r = "C";
+    }
+    else if (rate >= 0.6) {
+        level_r_i = 1;
+        level_r = "D";
+    }
+    else {
+        level_r_i = 0;
+        level_r = "E";
+    }
+
+    if (level_r_i > level_t_i) {
+        return level_t;
+    }
+    else {
+        return level_r;
+    }
 }
 //显示结果
 function ShowResult() {
@@ -535,7 +547,7 @@ function SetScoreAboveCity() {
                 var letter = "<img id='letter-game-" + i + "' class='letter' src='img/letter-" + level + ".png'/>";
                 $('.page-2').append($(letter));
             }
-            //更新成绩
+                //更新成绩
             else if ($('#letter-game-' + i).size() != 0) {
                 $('#letter-game-' + i).attr("src", "img/letter-" + userInfo.userGameInfo["game" + i] + ".png");
             }
