@@ -194,7 +194,9 @@ var pageCtl = {
     },
     loadComplete: function () {
         pageCtl.pageMove(pageCtl.effects.fade, 1);
-        //获取userInfo
+        //获取userInfo.userId
+        userInfo.userId = "123123";
+        GetNowUserInfo();
     }
 }
 
@@ -314,17 +316,17 @@ function QuestionStart() {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerNumOfTimes++;//答题次数+1
     //GetCityQuestionInfo(userInfo.nowUserPlayedIndex);
     QuestionInit();
-   // QuestionTimerStart();
+    // QuestionTimerStart();
 }
 
 //题目生成
 function QuestionInit() {
     $('.question-div-text').html("");
     var currentCityQuestions = questionInfo["game" + userInfo.nowUserPlayedIndex].slice(0);
-   // maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
+    // maxQuestionIndex = currentCityQuestions.length > 0 ? currentCityQuestions.length - 1 : 0;
     var random = new Array();
     random = GetRandom1to10();
-    for (var i = 0; i < (maxQuestionIndex+1); i++) {
+    for (var i = 0; i < (maxQuestionIndex + 1) ; i++) {
         var tmp = currentCityQuestions[i];
         currentCityQuestions[i] = currentCityQuestions[random[i]];
         currentCityQuestions[random[i]] = tmp;
@@ -358,7 +360,7 @@ function QuestionInit() {
     $('.question-div').css("height", $('.question-div-text').height() + "px");
     $('.answer').each(function () {
         $(this).singleTap(function () {
-            if (questionStartFlag==false) {
+            if (questionStartFlag == false) {
                 QuestionTimerStart();
                 questionStartFlag = true;
             }
@@ -441,9 +443,14 @@ function ActionAnswerAll() {
     userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel = level;
 
     var submitInfo = { "userId": userInfo.userId, "gameId": userInfo.nowUserPlayedIndex, "time": mytime, "correctNums": myCorrectNums, "level": level };
+    SubmitScore();
     //ajax发送成功后，对当前信息进行更新，更新最新城市的成绩
-    userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
-    ShowResult();
+    setTimeout(function () {
+        userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex] = userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel;
+        ShowResult();
+    }, 500);
+
+
 }
 function CalLevel(time, rate) {
     var level_t = "";
@@ -713,8 +720,8 @@ function GetRandom1to10() {
     var m = new Array();
     var i = 0;
 
-    while (i < (maxQuestionIndex+1)) {
-        var x = Math.floor(Math.random() * (maxTotalQuestions-1));
+    while (i < (maxQuestionIndex + 1)) {
+        var x = Math.floor(Math.random() * (maxTotalQuestions - 1));
         if (n[x] == 1) {
 
         }
@@ -725,4 +732,39 @@ function GetRandom1to10() {
         }
     }
     return m;
+}
+
+function GetNowUserInfo() {
+    $.get("/index.php?r=haizhiyan/detail", {
+        "userId": userInfo.userId,
+    }, function (data, textStatus) {
+        if (data.success = true) {
+            for (var i = 0; i < 10; i++) {
+                userInfo.userGameInfo["game" + i] = data.data["game" + i];
+                userInfo.nowUserPlayedIndex =( parseInt(data.data["nowgame"])!=null?(parseInt(data.data["nowgame"])+1):0);
+                if (userInfo.nowUserPlayedIndex == 10) {
+                    userInfo.userAllGameOk = true;
+                }
+            }
+        }
+        else {
+            alert("数据获取失败！");
+        }
+    })
+}
+function SubmitScore() {
+    $.get("/index.php?r=haizhiyan/play", {
+        "userId": userInfo.userId,
+        "gameId":userInfo.nowUserPlayedIndex,
+        "time": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime,
+        "correctNums": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectNums,
+        "level": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel
+}, function (data, textStatus) {
+    if (data.success = true) {
+        //更新成功
+    }
+    else {
+        alert("数据更新失败！");
+    }
+})
 }
