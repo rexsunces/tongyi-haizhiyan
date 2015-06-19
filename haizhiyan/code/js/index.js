@@ -1,46 +1,8 @@
-﻿var pageCtl = {
-    currentPageNumber: 0,
-
-    effects: { moveUp: 1, moveDown: 2, fade: 3 },
-
-    pageMove: function (effect, pageNumber) {
-        if (!pageCtl.isAnimating) {
-            pageCtl.isAnimating = true;
-            var fromPage = ".page-" + pageCtl.currentPageNumber;
-            var toPage = ".page-" + pageNumber;
-            pageCtl.currentPageNumber = pageNumber;
-
-            switch (effect) {
-                case pageCtl.effects.fade:
-                    outClass = 'ani-fadeOut';
-                    inClass = 'ani-fadeIn';
-                    break;
-            }
-            $(toPage).removeClass("hide");
-            $(fromPage).addClass(outClass);
-            $(toPage).addClass(inClass);
-
-            setTimeout(function () {
-                $(fromPage).removeClass('page-current');
-                $(fromPage).removeClass(outClass);
-                $(fromPage).addClass("hide");
-                // $(fromPage).find("*").addClass("hide");
-                $(toPage).addClass('page-current');
-                $(toPage).removeClass(inClass);
-                //$(toPage).find("*").removeClass("hide");
-                pageCtl.isAnimating = false;
-            }, 600);
-        }
-    },
-    loadComplete: function () {
-        pageCtl.pageMove(pageCtl.effects.fade, 1);
-    }
-}
-var answerQuestion = new Array()
+﻿var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
-var questionStartFlag=false;
+var questionStartFlag = false;
 var maxTotalQuestions = 15;//每个城市最多存在的题目，应该是15个
 var maxQuestionIndex = 9;//每个城市最多的题目索引号，即最多10个题目
 var maxWrongAnswers = 4;//最多允许答错的题目数
@@ -195,6 +157,46 @@ var rankInfo = [
  { userId: "123", col2: '小旋风7', col3: 2, col4: 18.88, col5: 10 }, { userId: "123", col2: '小旋风8', col3: 2, col4: 18.88, col5: 10 },
  { userId: "123", col2: '小旋风9', col3: 2, col4: 18.88, col5: 10 }, { userId: "123", col2: '小旋风10', col3: 2, col4: 18.88, col5: 10 },//col1是序号，前台生成
 ]
+
+var pageCtl = {
+    currentPageNumber: 0,
+
+    effects: { moveUp: 1, moveDown: 2, fade: 3 },
+
+    pageMove: function (effect, pageNumber) {
+        if (!pageCtl.isAnimating) {
+            pageCtl.isAnimating = true;
+            var fromPage = ".page-" + pageCtl.currentPageNumber;
+            var toPage = ".page-" + pageNumber;
+            pageCtl.currentPageNumber = pageNumber;
+
+            switch (effect) {
+                case pageCtl.effects.fade:
+                    outClass = 'ani-fadeOut';
+                    inClass = 'ani-fadeIn';
+                    break;
+            }
+            $(toPage).removeClass("hide");
+            $(fromPage).addClass(outClass);
+            $(toPage).addClass(inClass);
+
+            setTimeout(function () {
+                $(fromPage).removeClass('page-current');
+                $(fromPage).removeClass(outClass);
+                $(fromPage).addClass("hide");
+                // $(fromPage).find("*").addClass("hide");
+                $(toPage).addClass('page-current');
+                $(toPage).removeClass(inClass);
+                //$(toPage).find("*").removeClass("hide");
+                pageCtl.isAnimating = false;
+            }, 600);
+        }
+    },
+    loadComplete: function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 1);
+        //获取userInfo
+    }
+}
 
 var $j;
 $(function () {
