@@ -235,19 +235,29 @@ $(function () {
     //排行榜部分
     $('.rank-btn').singleTap(function () {
         $('.rank-table').html("");
-        var myRankInfo = rankInfo;//此处的rankinfo应该是ajax获取
-        var rankstr = "<tr><th class='th-xuhao'>序号</th><th class='th-normal'>昵称</th><th class='th-normal'>答题时间</th><th class='th-normal'>正确题数</th>";
-        for (var i = 0; i < myRankInfo.length; i++) {
-            rankstr += "<tr>" +
-                "<td class='th-align-center'>" + parseInt(i + 1) +
-                "</td><td class='th-align-center'>" + formatPalyerName(myRankInfo[i].col2 == null ? myRankInfo[i].userId : myRankInfo[i].col2) +
-                "</td><td class='th-align-center'>" + myRankInfo[i].col4 + " S" +
-                "</td><td class='th-align-center'>" + myRankInfo[i].col5 +
-                "</td>" +
-                "</tr>";
-        }
-        $('.rank-table').append(rankstr);
-        pageCtl.pageMove(pageCtl.effects.fade, "rank");
+        $.get("/index.php?r=haizhiyan/ranklist", {
+           
+        }, function (data, textStatus) {
+            if (data.success = true) {
+                //获取成功
+                var rankstr = "<tr><th class='th-xuhao'>序号</th><th class='th-normal'>昵称</th><th class='th-normal'>答题时间</th><th class='th-normal'>正确题数</th>";
+                for (var i = 0; i < data.data.length; i++) {
+                    rankstr += "<tr>" +
+                        "<td class='th-align-center'>" + parseInt(i + 1) +
+                        "</td><td class='th-align-center'>" + formatPalyerName(data.data[i].name == null ? data.data[i].openid : data.data[i].name) +
+                        "</td><td class='th-align-center'>" + data.data[i].sumtime + " S" +
+                        "</td><td class='th-align-center'>" + data.data[i].sumnum +
+                        "</td>" +
+                        "</tr>";
+                }
+                $('.rank-table').append(rankstr);
+                pageCtl.pageMove(pageCtl.effects.fade, "rank");
+            }
+            else {
+                alert("数据获取失败！");
+            }
+        })
+
     })
     $('.page-rank .rank-return-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 1);
@@ -741,7 +751,7 @@ function GetNowUserInfo() {
         if (data.success = true) {
             for (var i = 0; i < 10; i++) {
                 userInfo.userGameInfo["game" + i] = data.data["game" + i];
-                userInfo.nowUserPlayedIndex =( parseInt(data.data["nowgame"])!=null?(parseInt(data.data["nowgame"])+1):0);
+                userInfo.nowUserPlayedIndex = (parseInt(data.data["nowgame"]) != null ? (parseInt(data.data["nowgame"]) + 1) : 0);
                 if (userInfo.nowUserPlayedIndex == 10) {
                     userInfo.userAllGameOk = true;
                 }
@@ -755,16 +765,16 @@ function GetNowUserInfo() {
 function SubmitScore() {
     $.get("/index.php?r=haizhiyan/play", {
         "userId": userInfo.userId,
-        "gameId":userInfo.nowUserPlayedIndex,
+        "gameId": userInfo.nowUserPlayedIndex,
         "time": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerTime,
         "correctNums": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].answerCorrectNums,
         "level": userInfo.currentGameScore["game" + userInfo.nowUserPlayedIndex].scoreLevel
-}, function (data, textStatus) {
-    if (data.success = true) {
-        //更新成功
-    }
-    else {
-        alert("数据更新失败！");
-    }
-})
+    }, function (data, textStatus) {
+        if (data.success = true) {
+            //更新成功
+        }
+        else {
+            alert("数据更新失败！");
+        }
+    })
 }
