@@ -1,4 +1,28 @@
-﻿var answerQuestion = new Array()
+﻿var nowUserId = "";
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+//获取当前用户的微信Id
+function GetNowUserId() {
+	nowUserId = getUrlParam("openid");
+	if(nowUserId!=null){
+		window.localStorage.setItem('haizhiyan01',nowUserId);
+		window.location='index.html?tag=0';
+		return false;
+	}
+	nowUserId=window.localStorage.getItem('haizhiyan01');
+	if(nowUserId==null||nowUserId==''){
+			//需要授权获取用户id
+		window.location='/wx/getopenidbyoath2.php?url='+encodeURIComponent(window.location.pathname+window.location.search);
+		return false;
+	}
+}
+
+GetNowUserId();
+
+var answerQuestion = new Array()
 for (var i = 0; i < 9; i++) {
     answerQuestion[i] = new Array();
 }
@@ -193,9 +217,9 @@ var pageCtl = {
         }
     },
     loadComplete: function () {
-        pageCtl.pageMove(pageCtl.effects.fade, 1);
+        pageCtl.pageMove(pageCtl.effects.fade, 98);
         //获取userInfo.userId
-        userInfo.userId = "123123";
+        userInfo.userId = nowUserId;
         GetNowUserInfo();
     }
 }
@@ -203,8 +227,14 @@ var pageCtl = {
 var $j;
 $(function () {
     $j = jQuery.noConflict();
+    $('.enter-btn').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 1);
+    })
     $('.rule-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 99);
+    })
+    $('.page-1 .return-btn').singleTap(function () {
+        pageCtl.pageMove(pageCtl.effects.fade, 98);
     })
     $('.normal-return-btn').singleTap(function () {
         pageCtl.pageMove(pageCtl.effects.fade, 1);
@@ -230,7 +260,6 @@ $(function () {
                 }, 600);
             }
         }
-
     })
     //排行榜部分
     $('.rank-btn').singleTap(function () {
@@ -245,8 +274,8 @@ $(function () {
                     rankstr += "<tr>" +
                         "<td class='th-align-center'>" + parseInt(i + 1) +
                         "</td><td class='th-align-center'>" + formatPalyerName(data.data[i].name == null ? data.data[i].openid : data.data[i].name) +
-                        "</td><td class='th-align-center'>" + data.data[i].sumtime + " S" +
-                        "</td><td class='th-align-center'>" + data.data[i].sumnum +
+                        "</td><td class='th-align-center'>" + (data.data[i].sumtime == null ? "-":data.data[i].sumtime ) + " S" +
+                        "</td><td class='th-align-center'>" + (data.data[i].sumnum == null ? "-":data.data[i].sumnum) +
                         "</td>" +
                         "</tr>";
                 }
@@ -524,6 +553,7 @@ function CalLevel(time, rate) {
         return level_r;
     }
 }
+
 //显示结果
 function ShowResult() {
     var level = userInfo.userGameInfo["game" + userInfo.nowUserPlayedIndex];
@@ -751,7 +781,7 @@ function GetNowUserInfo() {
         if (data.success = true) {
             for (var i = 0; i < 10; i++) {
                 userInfo.userGameInfo["game" + i] = data.data["game" + i];
-                userInfo.nowUserPlayedIndex = (parseInt(data.data["nowgame"]) != null ? (parseInt(data.data["nowgame"]) + 1) : 0);
+                userInfo.nowUserPlayedIndex = (data.data["nowgame"] != null ? (parseInt(data.data["nowgame"]) + 1) : 0);
                 if (userInfo.nowUserPlayedIndex == 10) {
                     userInfo.userAllGameOk = true;
                 }
