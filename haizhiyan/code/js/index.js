@@ -6,18 +6,18 @@ function getUrlParam(name) {
 }
 //获取当前用户的微信Id
 function GetNowUserId() {
-	nowUserId = getUrlParam("openid");
-	if(nowUserId!=null){
-		window.localStorage.setItem('haizhiyan01',nowUserId);
-		window.location='index.html?tag=0';
-		return false;
-	}
-	nowUserId=window.localStorage.getItem('haizhiyan01');
-	if(nowUserId==null||nowUserId==''){
-			//需要授权获取用户id
-		window.location='/wx/getopenidbyoath2.php?url='+encodeURIComponent(window.location.pathname+window.location.search);
-		return false;
-	}
+    nowUserId = getUrlParam("openid");
+    if (nowUserId != null) {
+        window.localStorage.setItem('haizhiyan01', nowUserId);
+        window.location = 'index.html?tag=0';
+        return false;
+    }
+    nowUserId = window.localStorage.getItem('haizhiyan01');
+    if (nowUserId == null || nowUserId == '') {
+        //需要授权获取用户id
+        window.location = '/wx/getopenidbyoath2.php?url=' + encodeURIComponent(window.location.pathname + window.location.search);
+        return false;
+    }
 }
 
 GetNowUserId();
@@ -68,78 +68,135 @@ var questionInfo = {
         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
     ],
-    game2: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    game2: [{ question: "2000年悉尼奥运会中国获得多少枚金牌？", answers: ["A：26", "B：28", "C：30"], correctNo: 1 },
+        { question: "悉尼歌剧院出自哪国建筑设计师之手？", answers: ["A：丹麦", "B：荷兰", "C：波兰"], correctNo: 0 }, { question: "《清明上河图》作于哪个朝代？", answers: ["A：元代", "B：唐代", "C：宋代"], correctNo: 2 },
+        { question: "数学符号中的\"0\"起源于哪里？", answers: ["A：古印度", "B：古埃及", "C：中国"], correctNo: 0 }, { question: "“黄果树瀑布”位于哪个省？", answers: ["A：贵州", "B：云南", "C：湖南"], correctNo: 0 },
+        { question: "煤气表上的“度”表示？", answers: ["A：1立方米的煤气", "B：2立方米的煤气", "C：3立方米的煤气"], correctNo: 0 }, { question: "飞机总是如何起飞的？", answers: ["A：顺风", "B：迎风", "C：都一样"], correctNo: 1 },
+        { question: "“名不正则言不顺”是哪家的思想？", answers: ["A：道家", "B：墨家", "C：儒家"], correctNo: 2 }, { question: "珠穆朗玛峰海拔多少？", answers: ["A：8848米", "B：8868米", "C：8878米"], correctNo: 0 },
+        { question: "仙人掌进行光合作用是依靠什么？", answers: ["A：根", "B：茎", "C：叶"], correctNo: 2 }, { question: "人体如果失水多少就会危及生命？", answers: ["A：20%", "B：25%", "C：30%"], correctNo: 0 },
+        { question: "“伯乐一顾”中的伯乐看的是什么？", answers: ["A：羊", "B：马", "C：猴"], correctNo: 1 }, { question: "被称为“液体面包”的是？", answers: ["A：奶酪", "B：果汁", "C：牛奶"], correctNo: 2 },
+        { question: "人体中最大的消化腺是什么？", answers: ["A：肝脏", "B：胃", "C：肠"], correctNo: 0 }, { question: "唐太宗的“太宗”指的是他的？", answers: ["A：年号", "B：庙号", "C：国号"], correctNo: 1 }
     ],
-    game3: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    game3: [{ question: "开普敦的地形像什么？", answers: ["A：桌山", "B：凳山", "C：椅山"], correctNo: 0 },
+        { question: "开普敦是世界产量最丰富之一的是什么？", answers: ["A：虾", "B：鱼", "C：海带"], correctNo: 1 }, { question: "坦克是哪个国家发明的？", answers: ["A：德国", "B：美国", "C：英国"], correctNo: 2 },
+        { question: "“博士”作为官名最早出现在哪里？", answers: ["A：秦", "B：商", "C：夏"], correctNo: 0 }, { question: "人体含水量百分比最高的器官是什么？", answers: ["A：舌头", "B：眼球", "C：嘴巴"], correctNo: 1 },
+        { question: "传说中的巫山神女名叫？", answers: ["A：甄姬", "B：女娲", "C：瑶姬"], correctNo: 2 }, { question: "我国历史上第一部编年体史书是？", answers: ["A：《春秋》", "B：《战国》", "C：《诗经》"], correctNo: 0 },
+        { question: "人类最早使用的工具，是什么材料的？", answers: ["A：木", "B：石", "C：沙"], correctNo: 1 }, { question: "“知天命”代指什么年纪 ？", answers: ["A：六十岁", "B：四十岁", "C：五十岁"], correctNo: 2 },
+        { question: "“金屋藏娇”的故事与哪一位皇帝有关？", answers: ["A：汉武帝", "B：汉文帝", "C：汉景帝"], correctNo: 0 }, { question: "我国海洋气温最高值出现在几月份？", answers: ["A：七月", "B：八月", "C：九月"], correctNo: 1 },
+        { question: "被称为“诗圣”的唐代诗人哪一位？", answers: ["A：李白", "B：杜甫", "C：王维"], correctNo: 1 }, { question: "普洱茶的产地在哪？", answers: ["A：福建", "B：安徽", "C：云南"], correctNo: 2 },
+        { question: "发表著名的“铁幕演说”的是谁？", answers: ["A：邱吉尔", "B：卡耐基", "C：希特勒"], correctNo: 0 }, { question: "梅林罐头是我国哪个地方的名特产品？", answers: ["A：北京", "B：上海", "C：广州"], correctNo: 1 }
     ],
-    game4: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+   
+    game4: [
+{ question: "“斯特拉尔”是哪个国家的货币名称？", answers: ["A: 巴西", "B：阿根廷", "C：荷兰"], correctNo: 1 },
+{ question: "唐代小说一般被称作什么？", answers: ["A：传奇", "B：小篆", "C：话剧"], correctNo: 0 },
+{ question: "新加坡的国花是什么花？", answers: ["A：郁金香", "B：茉莉花", "C：万代兰"], correctNo: 2 },
+{ question: "澳门被葡萄牙割占的时间是？", answers: ["A：1553年", "B：1563年", "C：1573年"], correctNo: 0 },
+{ question: "为中国赢得第一块澳运会金牌的项目是？", answers: ["A：跳远", "B：射击", "C：跳水"], correctNo: 1 },
+{ question: "我国少数民族最多的民族是？", answers: ["A：苗族", "B：藏族", "C：壮族"], correctNo: 2 },
+{ question: "世界上最大的橡胶生产国是？", answers: ["A：泰国", "B：法国", "C：印度"], correctNo: 0 },
+{ question: "欧洲人口、面积最大的国家是？", answers: ["A：英国", "B：法国", "C：荷兰"], correctNo: 1 },
+{ question: "道统指的是什么思想？", answers: ["A：法家", "B：道家", "C：儒家"], correctNo: 2 },
+{ question: "CT采用下列哪种射线？", answers: ["A：X射线", "B：γ射线", "C：β射线"], correctNo: 0 },
+{ question: "三国演义中称为常胜将军的是？", answers: ["A：张飞", "B：赵云", "C：关羽"], correctNo: 1 },
+{ question: "建立马奇诺防线的国家是？", answers: ["A：朝鲜", "B：意大利", "C：法国"], correctNo: 2 },
+{ question: "“毛遂自荐”中的毛遂是哪国人？", answers: ["A：赵国", "B：燕国", "C：蜀国"], correctNo: 0 },
+{ question: "《幻城》的作者是谁？", answers: ["A：郭沫若", "B：郭敬明", "C：韩寒"], correctNo: 1 },
+{ question: "三藩市的金门桥是以什么颜色为主？", answers: ["A：棕色", "B：紫色", "C：红色"], correctNo: 2 }
     ],
-    game5: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-         { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-         { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-         { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-         { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-         { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    game5: [
+{ question: "巴西最大的城市是？", answers: ["A: 里约热内卢", "B：圣保罗", "C：巴西利亚"], correctNo: 1 },
+{ question: "巴西的通用语言是？", answers: ["A：葡萄牙语", "B：英语", "C：意大利语"], correctNo: 0 },
+{ question: "有咖啡国之称的国家是？", answers: ["A：法国", "B：德国", "C：巴西"], correctNo: 2 },
+{ question: "巴西嘉年华会所跳的舞是？", answers: ["A：桑巴舞", "B：霹雳舞", "C：波浪舞"], correctNo: 0 },
+{ question: "参加世界杯次数最多的球队是？", answers: ["A：德国", "B：巴西", "C：意大利"], correctNo: 1 },
+{ question: "《指环王》中的指环可以让人？", answers: ["A：跳跃", "B：飞行", "C：隐身"], correctNo: 2 },
+{ question: "桃谷仙人一共有几个？", answers: ["A：6", "B：7", "C：8"], correctNo: 0 },
+{ question: "局域网的英文缩写是？", answers: ["A：WAN", "B：LAN", "C：TCP"], correctNo: 1 },
+{ question: "一场篮球赛每个运动员最多允许犯规几次？", answers: ["A：3次", "B：4次", "C：5次"], correctNo: 2 },
+{ question: "眉毛的生长周期有多久？", answers: ["A：2个月", "B：3个月", "C：4个月"], correctNo: 0 },
+{ question: "《白雪公主》的作者是谁？", answers: ["A：安徒生", "B：格林", "C：佩罗"], correctNo: 1 },
+{ question: "哈雷彗星绕太阳运行的周期约为？", answers: ["A：56年", "B：66年", "C：76年"], correctNo: 2 },
+{ question: "“碧螺春”是一种？", answers: ["A：绿茶", "B：红茶", "C：春茶"], correctNo: 0 },
+{ question: "我国最早的表演艺术是？", answers: ["A：口技", "B：杂技", "C：魔术"], correctNo: 1 },
+{ question: "下列各朝代疆域西至最远的是？", answers: ["A：明朝", "B：宋朝", "C：唐朝"], correctNo: 2 }
     ],
-    game6: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    game6: [
+{ question: "低度酒的酒精含量不高于多少？", answers: ["A: 15%", "B：20%", "C：25%"], correctNo: 1 },
+{ question: "被称为荷月的月份是？", answers: ["A：六月", "B：七月", "C：八月"], correctNo: 0 },
+{ question: "现代人脑重约占体重的？", answers: ["A：1/20", "B：1/30", "C：1/40"], correctNo: 2 },
+
+{ question: "以下哪种动物是软体动物？", answers: ["A：蜗牛", "B：水螅", "C：蛇"], correctNo: 0 },
+{ question: "“沙龙”Salon是从哪国传进的外来语？", answers: ["A：德国", "B：法国", "C：意大利"], correctNo: 1 },
+    { question: "徐悲鸿以画什么闻名世界？", answers: ["A：竹子", "B：虾", "C：奔马"], correctNo: 2 },
+
+{ question: "雪莲花的颜色是？", answers: ["A：深红色", "B：白色", "C：橘黄色"], correctNo: 0 },
+{ question: "企鹅产卵的季节一般是：", answers: ["A：夏季", "B：秋季", "C：冬季"], correctNo: 1 },
+{ question: "黄金分割点是？", answers: ["A：0.616", "B：0.617", "C：0.618"], correctNo: 2 },
+{ question: "排球比赛场上运动员人数为？", answers: ["A：6人", "B：7人", "C：8人"], correctNo: 0 },
+{ question: "奥运会每四年举办一次，会期不超过？", answers: ["A：14", "B：16", "C：18"], correctNo: 1 },
+{ question: "世界卫生组织的英文缩写是？", answers: ["A：WOT", "B：WTC", "C：WHO"], correctNo: 2 },
+{ question: "我国国徽的通用尺度有几种？", answers: ["A：3种", "B：4种", "C：5种"], correctNo: 0 },
+{ question: "古代一时辰相当于？", answers: ["A：1个小时", "B：2个小时", "C：3个小时"], correctNo: 1 },
+{ question: "亚洲第一个举办奥运会的国家？", answers: ["A：韩国", "B：中国", "C：日本"], correctNo: 2 }
     ],
-    game7: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-         { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-         { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-         { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-         { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-         { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-         { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-         { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
+    game7:  [
+{ question: "以下哪一个不是伦敦名胜？", answers: ["A: 大本钟", "B：卢浮宫", "C：大英博物馆"],correctNo: 1 },
+{ question: "下列行星中，卫星最多的是？", answers: ["A：土星", "B：木星", "C：火星"], correctNo: 0 },
+{ question: "穿什么颜色的衣服的人更容易挨蚊子叮？", answers: ["A：红色", "B：白色", "C：黑色"], correctNo: 2 },
+
+{ question: "冰球比赛中每队上场多少人？", answers: ["A：6人", "B：7人", "C：8人"], correctNo: 0 },
+{ question: "提出“信息高速公路”的美国总统是：", answers: ["A：布什", "B：克林顿", "C：奥巴马"], correctNo: 1 },
+{ question: "我国第一大河长江有多长？", answers: ["A：6100公里", "B：6200公里", "C：6300公里"], correctNo: 2 },
+
+{ question: "目前，我国目前住房信贷款年限最长为？", answers: ["A：30年", "B：35年", "C：40年"], correctNo: 0 },
+{ question: "贫血主要原因是人体内缺少哪一种元素？", answers: ["A：钙", "B：铁", "C：铝"], correctNo: 1 },
+{ question: "世界哪一个国家的茶叶产量最多？", answers: ["A：中国", "B：泰国", "C：印度"], correctNo: 2 },
+{ question: "我国最古老的酒是？", answers: ["A：黄酒", "B：米酒", "C：白酒"], correctNo: 0 },
+{ question: "“郁金香”是哪个国家的象征？", answers: ["A：波兰", "B：荷兰", "C：马赛"], correctNo: 1 },
+    { question: "峨眉山位于我国哪个省份？", answers: ["A：湖南", "B：湖北", "C：四川"], correctNo: 2 },
+{ question: "著名藏书楼天一阁在什么地方？", answers: ["A：浙江宁波", "B：浙江杭州", "C：浙江温州"], correctNo: 0 },
+{ question: "古代一时辰相当于？", answers: ["A：1个小时", "B：2个小时", "C：3个小时"], correctNo: 1 },
+{ question: "“知天命”代指什么年纪？", answers: ["A：三十岁", "B：四十岁", "C：五十岁"], correctNo: 2 }
+],
+    game8: [
+{ question: "第一个国际电影节在哪举行？", answers: ["A: 华盛顿", "B：威尼斯", "C：巴黎"],correctNo: 1 },
+{ question: "多少级以上的地震会造成破坏？", answers: ["A：5级", "B：6级", "C：7级"], correctNo: 0 },
+{ question: "智商指数达到多少以上才能称得上“聪明”？", answers: ["A：100", "B：110", "C：120"], correctNo: 2 },
+
+{ question: "美国迄今在任时间最长的总统是？", answers: ["A：罗斯福", "B：克林顿", "C：布什"], correctNo: 0 },
+{ question: "“昙花一现”是“现”在？", answers: ["A：早晨", "B：晚上", "C：下午"], correctNo: 1 },
+    { question: "我国有几个银行可以发行货币？", answers: ["A：3个", "B：2个", "C：1个"], correctNo: 2 },
+
+{ question: "马是怎样睡觉的？", answers: ["A：侧卧睡", "B：躺着睡", "C：站着睡"], correctNo: 0 },
+{ question: "公安机关传唤犯罪嫌疑人，最长不得超过？", answers: ["A：10小时", "B：12小时", "C：24小时"], correctNo: 1 },
+{ question: "算盘的梁上一珠代表几？", answers: ["A：5", "B：6", "C：7"], correctNo: 2 },
+{ question: "飞机上的航行灯有几种颜色？", answers: ["A：3种", "B：4种", "C：5种"], correctNo: 0 },
+{ question: "“郁金香”是哪个国家的象征？", answers: ["A：波兰", "B：荷兰", "C：马赛"], correctNo: 1 },
+{ question: "峨眉山位于我国哪个省份？", answers: ["A：湖南", "B：湖北", "C：四川"], correctNo: 2 },
+{ question: "联合国的总部设在哪一个地方？", answers: ["A：纽约", "B：伦敦", "C：华盛顿"], correctNo: 0 },
+{ question: "古代一时辰相当于？", answers: ["A：1个小时", "B：2个小时", "C：3个小时"], correctNo: 1 },
+{ question: "评剧是我国哪个地方的主要戏曲？", answers: ["A：四川", "B：安徽", "C：辽宁"], correctNo: 2 }
     ],
-    game8: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
-    ],
-    game9: [{ question: "下面哪个城市没有纽伦港美称？", answers: ["A：中国香港", "B：英国伦敦", "C：法国巴黎"], correctNo: 2 },
-        { question: "以下哪个不是中国香港的美誉之称？", answers: ["A：东方之珠", "B：狂欢之城", "C：购物天堂"], correctNo: 1 }, { question: "统一海之言粉红色瓶装的是什么口味？", answers: ["A：西柚味", "B：柠檬味", "C：卡曼橘味"], correctNo: 0 },
-        { question: "以下哪一个不是香港八景？", answers: ["A：快活啼声", "B：旗山星火", "C：石梁月夜"], correctNo: 2 }, { question: "猫在哪个国家内受到严格保护？", answers: ["A：古埃及", "B：中国", "C：波兰"], correctNo: 0 },
-        { question: "水在摄氏多少度时密度最大？", answers: ["A：3度", "B：4度", "C：5度"], correctNo: 1 }, { question: "“腊八粥”最早起源于？", answers: ["A：基督教", "B：伊斯兰教", "C：佛教"], correctNo: 2 },
-        { question: "太阳系中最大的行星是哪个？", answers: ["A：土星", "B：木星", "C：金星"], correctNo: 1 }, { question: "举重比赛中，最重的杠铃片是哪个？", answers: ["A：红色的", "B：蓝色的", "C：黄色的"], correctNo: 0 },
-        { question: "血液中的红细胞可以活多少天？", answers: ["A：100天", "B：110天", "C：120天"], correctNo: 2 }, { question: "冬季奥运会如何计算届次？", answers: ["A：3年1次", "B：5年2次", "C：4年1次"], correctNo: 2 },
-        { question: "连接深圳与香港的边界桥叫什么？", answers: ["A：深圳桥", "B：罗湖桥", "C：深港桥"], correctNo: 1 }, { question: "在香港上市的内地公司股票称为？", answers: ["A：港股", "B：普通股", "C：红筹股"], correctNo: 2 },
-        { question: "下面哪首歌不是香港乐队beyond的作品？", answers: ["A：永远不回头", "B：海阔天空", "C：真的爱你"], correctNo: 0 }, { question: "香港第二任行政长官选举于2002年几月举行？", answers: ["A：1月", "B：3月", "C：5月"], correctNo: 1 }
-    ],
+    game9:    [
+{ question: "亚、欧、非之间的内海是？", answers: ["A: 里海", "B：地中海", "C：死海"],correctNo: 1 },
+{ question: "公元前5世纪雅典称霸于？", answers: ["A：地中海", "B：希腊", "C：意大利"], correctNo: 0 },
+{ question: "跨亚欧两大洲的是？", answers: ["A：长岛", "B：济州岛", "C：地中海"], correctNo: 2 },
+
+{ question: "乐器琵琶有几根弦？", answers: ["A：4根", "B：5根", "C：6根"], correctNo: 0 },
+{ question: "“意大利的比萨斜塔倾斜达多少米？", answers: ["A：10米", "B：15米", "C：20米"], correctNo: 1 },
+    { question: "馒头起源于？", answers: ["A：地中海", "B：北方", "C：南方"], correctNo: 2 },
+
+{ question: "草圣是指哪位书法家？", answers: ["A：张旭", "B：王羲之", "C：武则天"], correctNo: 0 },
+{ question: "公安机关传唤犯罪嫌疑人，最长不得超过？", answers: ["A：10小时", "B：12小时", "C：24小时"], correctNo: 1 },
+{ question: "算盘的梁上一珠代表几？", answers: ["A：5", "B：6", "C：7"], correctNo: 2 },
+{ question: "京剧服装中男性角色蟒袍上的动物是？", answers: ["A：龙", "B：蛇", "C：麒麟"], correctNo: 0 },
+{ question: "“郁金香”是哪个国家的象征？", answers: ["A：波兰", "B：荷兰", "C：马赛"], correctNo: 1 },
+{ question: "峨眉山位于我国哪个省份？", answers: ["A：湖南", "B：湖北", "C：四川"], correctNo: 2 },
+{ question: "我国人口密度最高的省份是？", answers: ["A：江苏", "B：安徽", "C：上海"], correctNo: 0 },
+{ question: "古代一时辰相当于？", answers: ["A：1个小时", "B：2个小时", "C：3个小时"], correctNo: 1 },
+{ question: "避雷针的发明者是？", answers: ["A：爱迪生", "B：爱因斯坦", "C：富兰克林"], correctNo: 2 }
+]
 
 }
 var gameInfo = {
@@ -265,7 +322,7 @@ $(function () {
     $('.rank-btn').singleTap(function () {
         $('.rank-table').html("");
         $.get("/index.php?r=haizhiyan/ranklist", {
-           
+
         }, function (data, textStatus) {
             if (data.success = true) {
                 //获取成功
@@ -274,8 +331,8 @@ $(function () {
                     rankstr += "<tr>" +
                         "<td class='th-align-center'>" + parseInt(i + 1) +
                         "</td><td class='th-align-center'>" + formatPalyerName(data.data[i].name == null ? data.data[i].openid : data.data[i].name) +
-                        "</td><td class='th-align-center'>" + (data.data[i].sumtime == null ? "-":data.data[i].sumtime ) + " S" +
-                        "</td><td class='th-align-center'>" + (data.data[i].sumnum == null ? "-":data.data[i].sumnum) +
+                        "</td><td class='th-align-center'>" + (data.data[i].sumtime == null ? "-" : data.data[i].sumtime) + " S" +
+                        "</td><td class='th-align-center'>" + (data.data[i].sumnum == null ? "-" : data.data[i].sumnum) +
                         "</td>" +
                         "</tr>";
                 }
